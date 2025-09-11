@@ -1,0 +1,153 @@
+2025-09-10 19:13:32,722 - WARNING - Requests made without an app_token will be subject to strict throttling limits.
+2025-09-10 19:13:32,723 - INFO - Searching for crime datasets with geographical coordinates
+2025-09-10 19:23:29,506 - WARNING - Requests made without an app_token will be subject to strict throttling limits.
+2025-09-10 19:23:29,506 - INFO - Searching for crime datasets with geographical coordinates
+2025-09-10 19:23:29,506 - INFO - Searching for crime datasets in data.cityofchicago.org
+2025-09-10 19:23:29,506 - WARNING - Requests made without an app_token will be subject to strict throttling limits.
+2025-09-10 19:23:32,736 - INFO - Found dataset with coordinates: Crimes - 2001 to Present
+2025-09-10 19:23:32,979 - INFO - Found dataset with coordinates: Traffic Crashes - Crashes
+2025-09-10 19:23:33,166 - INFO - Found dataset with coordinates: Police Stations
+2025-09-10 19:23:34,601 - INFO - Found dataset with coordinates: Towed Vehicles
+2025-09-10 19:23:34,976 - INFO - Found dataset with coordinates: Crimes - One year prior to present
+2025-09-10 19:23:37,856 - INFO - Found dataset with coordinates: Traffic Crashes - Vehicles
+2025-09-10 19:23:38,368 - INFO - Found dataset with coordinates: Violence Reduction - Victims of Homicides and Non-Fatal Shootings
+2025-09-10 19:23:40,108 - INFO - Found dataset with coordinates: Crimes - 2015
+2025-09-10 19:23:40,723 - INFO - Found dataset with coordinates: Violence Reduction - Shotspotter Alerts - Historical
+2025-09-10 19:23:41,337 - INFO - Found dataset with coordinates: Strategic Subject List - Historical
+2025-09-10 19:23:41,644 - INFO - Found dataset with coordinates: Crimes - 2020
+2025-09-10 19:23:41,952 - INFO - Found dataset with coordinates: Crimes - 2022
+2025-09-10 19:23:43,692 - INFO - Found dataset with coordinates: Crimes - 2018
+2025-09-10 19:23:44,171 - INFO - Found dataset with coordinates: Crimes - 2014
+2025-09-10 19:23:46,816 - INFO - Found dataset with coordinates: Crimes - 2024
+2025-09-10 19:23:47,627 - INFO - Found dataset with coordinates: Crimes - 2017
+2025-09-10 19:23:47,993 - INFO - Found dataset with coordinates: Crimes - 2019
+2025-09-10 19:23:48,505 - INFO - Found dataset with coordinates: Crimes - 2013
+2025-09-10 19:23:48,788 - INFO - Searching for crime datasets in data.sfgov.org
+2025-09-10 19:23:48,789 - WARNING - Requests made without an app_token will be subject to strict throttling limits.
+2025-09-10 19:23:49,173 - INFO - Searching for crime datasets in data.seattle.gov
+2025-09-10 19:23:49,173 - WARNING - Requests made without an app_token will be subject to strict throttling limits.
+2025-09-10 19:23:53,113 - INFO - Searching for crime datasets in data.lacity.org
+2025-09-10 19:23:53,114 - WARNING - Requests made without an app_token will be subject to strict throttling limits.
+2025-09-10 19:23:53,896 - INFO - Found dataset with coordinates: Crime Data from 2020 to Present
+2025-09-10 19:23:54,311 - INFO - Found dataset with coordinates: Crime Data from 2010 to 2019
+2025-09-10 19:23:54,714 - INFO - Found dataset with coordinates: Arrest Data from 2010 to 2019
+2025-09-10 19:23:55,161 - INFO - Found dataset with coordinates: Traffic Collision Data from 2010 to Present
+2025-09-10 19:23:57,286 - INFO - Found dataset with coordinates: Prostitution along N Western Ave
+2025-09-10 19:23:57,721 - INFO - Found dataset with coordinates: Arrest Data from 2020 to Present
+2025-09-10 19:23:58,746 - INFO - Found dataset with coordinates: LAHD Affordable Housing Projects List (2003 to Present)
+2025-09-10 19:24:02,019 - INFO - Found dataset with coordinates: Domestic Violence Calls from 2020 to Present
+2025-09-10 19:24:03,046 - INFO - Found dataset with coordinates: Marijuana Data
+2025-09-10 19:24:03,047 - INFO - Searching for crime datasets in data.cityofnewyork.us
+2025-09-10 19:24:03,047 - WARNING - Requests made without an app_token will be subject to strict throttling limits.
+2025-09-10 19:24:03,808 - INFO - Found dataset with coordinates: Citywide Payroll Data (Fiscal Year)
+2025-09-10 19:24:04,541 - INFO - Found dataset with coordinates: NYPD Arrest Data (Year to Date)
+2025-09-10 19:24:19,328 - INFO - Found dataset with coordinates: NYPD Arrests Data (Historic)
+2025-09-10 19:24:19,722 - INFO - Found dataset with coordinates: NYPD Complaint Data Current (Year To Date)
+2025-09-10 19:24:20,069 - INFO - Found dataset with coordinates: NYPD Shooting Incident Data (Historic)
+2025-09-10 19:24:20,453 - INFO - Found dataset with coordinates: NYPD Shooting Incident Data (Year To Date)
+2025-09-10 19:24:20,719 - INFO - Found dataset with coordinates: Emergency Response Incidents
+2025-09-10 19:24:21,581 - INFO - Found dataset with coordinates: Fire Incident Dispatch Data
+2025-09-10 19:24:29,644 - INFO - Found dataset with coordinates: 911 End-to-End Data
+2025-09-10 19:24:29,644 - INFO - Searching for crime datasets in data.baltimorecity.gov
+2025-09-10 19:24:29,645 - WARNING - Requests made without an app_token will be subject to strict throttling limits.
+2025-09-10 19:24:29,879 - WARNING - Error accessing data.baltimorecity.gov: 404 Client Error: Not Found
+2025-09-10 19:24:29,879 - INFO - Searching for crime datasets in data.austintexas.gov
+2025-09-10 19:24:29,879 - WARNING - Requests made without an app_token will be subject to strict throttling limits.
+2025-09-10 19:24:30,153 - INFO - Searching for crime datasets in data.cityofboston.gov
+2025-09-10 19:24:30,154 - WARNING - Requests made without an app_token will be subject to strict throttling limits.
+2025-09-10 19:24:31,312 - WARNING - Error accessing data.cityofboston.gov: 404 Client Error: Not Found
+2025-09-10 19:24:31,315 - INFO - Searching for crime datasets in data.nola.gov
+2025-09-10 19:24:31,315 - WARNING - Requests made without an app_token will be subject to strict throttling limits.
+2025-09-10 19:24:32,584 - INFO - Found dataset with coordinates: Calls for Service 2013
+2025-09-10 19:24:33,024 - INFO - Found dataset with coordinates: Calls for Service 2014
+2025-09-10 19:24:33,357 - INFO - Found dataset with coordinates: Calls for Service 2017
+2025-09-10 19:24:33,658 - INFO - Found dataset with coordinates: Electronic Police Report 2018
+2025-09-10 19:24:34,136 - INFO - Found dataset with coordinates: Calls for Service 2016
+2025-09-10 19:24:34,483 - INFO - Found dataset with coordinates: Calls for Service 2022
+2025-09-10 19:24:35,304 - INFO - Found dataset with coordinates: Calls for Service 2015
+2025-09-10 19:24:35,609 - INFO - Found dataset with coordinates: NOPD Misconduct Complaints
+2025-09-10 19:24:35,917 - INFO - Found dataset with coordinates: Electronic Police Report 2019
+2025-09-10 19:24:36,328 - INFO - Found dataset with coordinates: Electronic Police Report 2017
+2025-09-10 19:24:36,736 - INFO - Found dataset with coordinates: Calls for Service 2019
+2025-09-10 19:24:37,036 - INFO - Found dataset with coordinates: Calls for Service 2024
+2025-09-10 19:24:37,352 - INFO - Found dataset with coordinates: Calls for Service 2023
+2025-09-10 19:24:37,657 - INFO - Found dataset with coordinates: Electronic Police Report 2016
+2025-09-10 19:24:37,964 - INFO - Found dataset with coordinates: Calls for Service 2021
+2025-09-10 19:24:39,603 - INFO - Found dataset with coordinates: NOPD Body Worn Camera Metadata
+2025-09-10 19:24:39,910 - INFO - Found dataset with coordinates: Calls for Service 2012
+2025-09-10 19:24:40,320 - INFO - Found dataset with coordinates: Call for Service 2020
+2025-09-10 19:24:40,627 - INFO - Found dataset with coordinates: Calls for Service 2011
+2025-09-10 19:24:41,139 - INFO - Found dataset with coordinates: Electronic Police Report 2022
+2025-09-10 19:24:41,549 - INFO - Found dataset with coordinates: Stop and Search (Field Interviews)
+2025-09-10 19:24:41,959 - INFO - Found dataset with coordinates: Electronic Police Report 2024
+2025-09-10 19:24:42,472 - INFO - Found dataset with coordinates: Electronic Police Report 2023
+2025-09-10 19:24:42,773 - INFO - Found dataset with coordinates: Calls for Service 2025
+2025-09-10 19:24:43,189 - INFO - Found dataset with coordinates: Electronic Police Report 2025
+2025-09-10 19:24:43,546 - INFO - Found dataset with coordinates: Electronic Police Report 2021
+2025-09-10 19:24:44,521 - INFO - Found dataset with coordinates: Electronic Police Report 2015
+2025-09-10 19:24:44,825 - INFO - Found dataset with coordinates: Electronic Police Report 2020
+2025-09-10 19:24:45,544 - INFO - Found dataset with coordinates: Electronic Police Report 2014
+2025-09-10 19:24:45,812 - INFO - Found dataset with coordinates: Electronic Police Report 2010
+2025-09-10 19:24:46,157 - INFO - Found dataset with coordinates: Electronic Police Report 2013
+2025-09-10 19:24:46,568 - INFO - Found dataset with coordinates: Electronic Police Report 2012
+2025-09-10 19:24:46,873 - INFO - Found dataset with coordinates: Electronic Police Report 2011
+2025-09-10 19:24:48,344 - INFO - Found 69 potential crime datasets with coordinates
+2025-09-10 19:24:48,349 - INFO - Found 69 potential datasets
+2025-09-10 19:24:48,352 - INFO - Dataset metadata saved to crime_data/dataset_metadata.json
+2025-09-10 19:24:48,369 - INFO - Downloading dataset: Crimes - 2001 to Present from data.cityofchicago.org
+2025-09-10 19:24:48,370 - WARNING - Requests made without an app_token will be subject to strict throttling limits.
+2025-09-10 19:24:58,454 - INFO - Successfully downloaded 50000 records from Crimes - 2001 to Present
+2025-09-10 19:24:58,540 - INFO - Extracted 49947 records with valid coordinates from dataset
+2025-09-10 19:24:59,959 - INFO - Downloading dataset: Traffic Crashes - Crashes from data.cityofchicago.org
+2025-09-10 19:24:59,960 - WARNING - Requests made without an app_token will be subject to strict throttling limits.
+2025-09-10 19:25:08,612 - INFO - Successfully downloaded 50000 records from Traffic Crashes - Crashes
+2025-09-10 19:25:08,728 - INFO - Extracted 49481 records with valid coordinates from dataset
+2025-09-10 19:25:10,339 - INFO - Downloading dataset: Police Stations from data.cityofchicago.org
+2025-09-10 19:25:10,340 - WARNING - Requests made without an app_token will be subject to strict throttling limits.
+2025-09-10 19:25:10,656 - INFO - Successfully downloaded 23 records from Police Stations
+2025-09-10 19:25:10,684 - INFO - Extracted 23 records with valid coordinates from dataset
+2025-09-10 19:25:11,689 - INFO - Downloading dataset: Towed Vehicles from data.cityofchicago.org
+2025-09-10 19:25:11,690 - WARNING - Requests made without an app_token will be subject to strict throttling limits.
+2025-09-10 19:25:12,319 - INFO - Successfully downloaded 7021 records from Towed Vehicles
+2025-09-10 19:25:12,321 - WARNING - Could not identify coordinate columns in dataset
+2025-09-10 19:25:13,323 - INFO - Downloading dataset: Crimes - One year prior to present from data.cityofchicago.org
+2025-09-10 19:25:13,323 - WARNING - Requests made without an app_token will be subject to strict throttling limits.
+2025-09-10 19:25:22,504 - INFO - Successfully downloaded 50000 records from Crimes - One year prior to present
+2025-09-10 19:25:22,570 - INFO - Extracted 49998 records with valid coordinates from dataset
+2025-09-10 19:25:23,943 - INFO - Downloading dataset: Traffic Crashes - Vehicles from data.cityofchicago.org
+2025-09-10 19:25:23,944 - WARNING - Requests made without an app_token will be subject to strict throttling limits.
+2025-09-10 19:25:33,149 - INFO - Successfully downloaded 50000 records from Traffic Crashes - Vehicles
+2025-09-10 19:25:33,168 - WARNING - Could not identify coordinate columns in dataset
+2025-09-10 19:25:34,172 - INFO - Downloading dataset: Violence Reduction - Victims of Homicides and Non-Fatal Shootings from data.cityofchicago.org
+2025-09-10 19:25:34,172 - WARNING - Requests made without an app_token will be subject to strict throttling limits.
+2025-09-10 19:25:44,368 - INFO - Successfully downloaded 50000 records from Violence Reduction - Victims of Homicides and Non-Fatal Shootings
+2025-09-10 19:25:44,516 - INFO - Extracted 49996 records with valid coordinates from dataset
+2025-09-10 19:25:46,073 - INFO - Downloading dataset: Crimes - 2015 from data.cityofchicago.org
+2025-09-10 19:25:46,073 - WARNING - Requests made without an app_token will be subject to strict throttling limits.
+2025-09-10 19:25:48,870 - INFO - Successfully downloaded 50000 records from Crimes - 2015
+2025-09-10 19:25:48,960 - INFO - Extracted 47965 records with valid coordinates from dataset
+2025-09-10 19:25:50,314 - INFO - Downloading dataset: Violence Reduction - Shotspotter Alerts - Historical from data.cityofchicago.org
+2025-09-10 19:25:50,315 - WARNING - Requests made without an app_token will be subject to strict throttling limits.
+2025-09-10 19:25:52,884 - INFO - Successfully downloaded 50000 records from Violence Reduction - Shotspotter Alerts - Historical
+2025-09-10 19:25:52,961 - INFO - Extracted 50000 records with valid coordinates from dataset
+2025-09-10 19:25:54,370 - INFO - Downloading dataset: Strategic Subject List - Historical from data.cityofchicago.org
+2025-09-10 19:25:54,371 - WARNING - Requests made without an app_token will be subject to strict throttling limits.
+2025-09-10 19:25:57,321 - INFO - Successfully downloaded 50000 records from Strategic Subject List - Historical
+2025-09-10 19:25:57,380 - INFO - Extracted 0 records with valid coordinates from dataset
+2025-09-10 19:25:58,381 - INFO - Successfully processed 7 datasets with coordinate data
+2025-09-10 19:26:03,193 - INFO - Combined dataset with 297410 records saved to crime_data/combined_crime_data_20250910.csv
+2025-09-10 19:26:03,250 - INFO - 
+Summary of combined dataset:
+2025-09-10 19:26:03,250 - INFO - Total records: 297410
+2025-09-10 19:26:03,258 - INFO - Cities represented: 1
+2025-09-10 19:26:03,258 - INFO - Columns: id, case_number, date, block, iucr, primary_type, description, location_description, arrest, domestic, beat, district, ward, community_area, fbi_code, x_coordinate, y_coordinate, year, updated_on, latitude, longitude, location, :@computed_region_awaf_s7ux, :@computed_region_6mkv_f3dw, :@computed_region_vrxf_vc4k, :@computed_region_bdys_3d7i, :@computed_region_43wa_7qmu, :@computed_region_rpca_8um6, :@computed_region_d9mm_jgwp, :@computed_region_d3ds_rm58, :@computed_region_8hcu_yrd4, source_city, source_url, dataset_name, crash_record_id, crash_date, posted_speed_limit, traffic_control_device, device_condition, weather_condition, lighting_condition, first_crash_type, trafficway_type, alignment, roadway_surface_cond, road_defect, report_type, crash_type, damage, date_police_notified, prim_contributory_cause, sec_contributory_cause, street_no, street_direction, street_name, beat_of_occurrence, num_units, most_severe_injury, injuries_total, injuries_fatal, injuries_incapacitating, injuries_non_incapacitating, injuries_reported_not_evident, injuries_no_indication, injuries_unknown, crash_hour, crash_day_of_week, crash_month, hit_and_run_i, private_property_i, intersection_related_i, photos_taken_i, crash_date_est_i, statements_taken_i, dooring_i, work_zone_i, work_zone_type, workers_present_i, lane_cnt, district_name, address, city, state, zip, website, phone, fax, tty, case_, date_of_occurrence, _iucr, _primary_decsription, _secondary_description, _location_description, fbi_cd, victimization_primary, incident_primary, gunshot_injury_i, unique_id, zip_code, street_outreach_organization, area, age, sex, race, victimization_fbi_cd, incident_fbi_cd, victimization_fbi_descr, incident_fbi_descr, victimization_iucr_cd, incident_iucr_cd, victimization_iucr_secondary, incident_iucr_secondary, month, day_of_week, hour, state_house_district, state_senate_district, updated, homicide_victim_first_name, homicide_victim_mi, homicide_victim_last_name, incident_type_description, rounds, illinois_house_district, illinois_senate_district
+2025-09-10 19:26:03,258 - INFO - 
+Sample data:
+2025-09-10 19:26:03,258 - INFO -          id case_number                     date  ... rounds illinois_house_district illinois_senate_district
+0  13956856    JJ401760  2025-09-02T00:00:00.000  ...    NaN                     NaN                      NaN
+1  13953872    JJ398616  2025-09-02T00:00:00.000  ...    NaN                     NaN                      NaN
+2  13953796    JJ398609  2025-09-02T00:00:00.000  ...    NaN                     NaN                      NaN
+3  13954772    JJ399809  2025-09-02T00:00:00.000  ...    NaN                     NaN                      NaN
+4  13953871    JJ398711  2025-09-02T00:00:00.000  ...    NaN                     NaN                      NaN
+
+[5 rows x 126 columns]
