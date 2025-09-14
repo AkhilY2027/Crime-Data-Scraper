@@ -151,3 +151,251 @@ Sample data:
 4  13953871    JJ398711  2025-09-02T00:00:00.000  ...    NaN                     NaN                      NaN
 
 [5 rows x 126 columns]
+2025-09-11 14:48:10,735 - WARNING - Requests made without an app_token will be subject to strict throttling limits.
+2025-09-11 14:48:10,736 - INFO - Loading existing metadata from crime_data/dataset_metadata.json
+2025-09-11 14:48:10,737 - INFO - Loaded 69 datasets from existing metadata
+2025-09-11 14:48:10,737 - INFO - Using existing metadata file
+2025-09-11 14:48:10,737 - INFO - Found datasets from 4 domains
+2025-09-11 14:48:10,737 - INFO - Processing dataset from data.cityofchicago.org
+2025-09-11 14:48:10,737 - INFO - Selected dataset: Crimes - 2001 to Present
+2025-09-11 14:48:10,737 - INFO - Downloading dataset: Crimes - 2001 to Present from data.cityofchicago.org
+2025-09-11 14:48:10,737 - WARNING - Requests made without an app_token will be subject to strict throttling limits.
+2025-09-11 14:48:32,820 - WARNING - Requests made without an app_token will be subject to strict throttling limits.
+2025-09-11 14:48:32,821 - INFO - Loading existing metadata from crime_data/dataset_metadata.json
+2025-09-11 14:48:32,822 - INFO - Loaded 69 datasets from existing metadata
+2025-09-11 14:48:32,822 - INFO - Using existing metadata file
+2025-09-11 14:48:32,822 - INFO - Found datasets from 4 domains
+2025-09-11 14:48:32,822 - INFO - Processing dataset from data.cityofchicago.org
+2025-09-11 14:48:32,822 - INFO - Selected dataset: Crimes - 2001 to Present
+2025-09-11 14:48:32,822 - INFO - Downloading dataset: Crimes - 2001 to Present from data.cityofchicago.org
+2025-09-11 14:48:32,822 - WARNING - Requests made without an app_token will be subject to strict throttling limits.
+2025-09-11 14:48:42,973 - ERROR - Error downloading dataset Crimes - 2001 to Present: HTTPSConnectionPool(host='data.cityofchicago.org', port=443): Read timed out. (read timeout=10)
+2025-09-11 14:48:43,978 - INFO - Processing dataset from data.lacity.org
+2025-09-11 14:48:43,979 - INFO - Selected dataset: Crime Data from 2020 to Present
+2025-09-11 14:48:43,979 - INFO - Downloading dataset: Crime Data from 2020 to Present from data.lacity.org
+2025-09-11 14:48:43,980 - WARNING - Requests made without an app_token will be subject to strict throttling limits.
+2025-09-11 14:48:47,009 - INFO - Successfully downloaded 50000 records from Crime Data from 2020 to Present
+2025-09-11 14:48:47,122 - INFO - Extracted 49778 records with valid coordinates from dataset
+2025-09-11 14:48:48,529 - INFO - Processing dataset from data.cityofnewyork.us
+2025-09-11 14:48:48,530 - INFO - Selected dataset: Emergency Response Incidents
+2025-09-11 14:48:48,530 - INFO - Downloading dataset: Emergency Response Incidents from data.cityofnewyork.us
+2025-09-11 14:48:48,530 - WARNING - Requests made without an app_token will be subject to strict throttling limits.
+2025-09-11 14:48:52,311 - INFO - Successfully downloaded 11750 records from Emergency Response Incidents
+2025-09-11 14:48:52,328 - INFO - Extracted 10125 records with valid coordinates from dataset
+2025-09-11 14:48:53,387 - INFO - Processing dataset from data.nola.gov
+2025-09-11 14:48:53,388 - INFO - Selected dataset: Calls for Service 2013
+2025-09-11 14:48:53,389 - INFO - Downloading dataset: Calls for Service 2013 from data.nola.gov
+2025-09-11 14:48:53,389 - WARNING - Requests made without an app_token will be subject to strict throttling limits.
+2025-09-11 14:48:56,623 - INFO - Successfully downloaded 50000 records from Calls for Service 2013
+2025-09-11 14:48:56,696 - INFO - Extracted 0 records with valid coordinates from dataset
+2025-09-11 14:48:57,701 - INFO - Successfully processed 2 datasets with coordinate data
+2025-09-11 14:48:58,195 - INFO - Combined dataset with 59903 records saved to crime_data/combined_crime_data_20250911.csv
+2025-09-11 14:48:58,234 - INFO - 
+Summary of combined dataset:
+2025-09-11 14:48:58,234 - INFO - Total records: 59903
+2025-09-11 14:48:58,237 - INFO - Cities represented: 2
+2025-09-11 14:48:58,237 - INFO - Columns: latitude, longitude, closed_date, creation_date, date_occ, date_rptd, time_occ, area, area_name, borough, crm_cd, crm_cd_1, crm_cd_2, crm_cd_3, crm_cd_4, crm_cd_desc, cross_street, dataset_name, dr_no, incident_type, lat, location, lon, mocodes, part_1_2, premis_cd, premis_desc, rpt_dist_no, source_city, source_url, status, status_desc, vict_age, vict_descent, vict_sex, weapon_desc, weapon_used_cd
+2025-09-11 14:48:58,237 - INFO - 
+Sample data:
+2025-09-11 14:48:58,237 - INFO -    latitude  longitude closed_date  ... vict_sex                       weapon_desc weapon_used_cd
+0   34.2124  -118.4092         NaN  ...        M                               NaN            NaN
+1   34.1993  -118.4203         NaN  ...        M  KNIFE WITH BLADE 6INCHES OR LESS            200
+2   34.1847  -118.4509         NaN  ...        M                               NaN            NaN
+3   34.0339  -118.3747         NaN  ...        F                               NaN            NaN
+4   33.9813  -118.4350         NaN  ...        M                               NaN            NaN
+
+[5 rows x 37 columns]
+2025-09-11 14:48:58,285 - INFO - 
+Column order: ['latitude', 'longitude', 'closed_date', 'creation_date', 'date_occ', 'date_rptd', 'time_occ', 'area', 'area_name', 'borough']
+2025-09-11 15:47:08,828 - WARNING - Requests made without an app_token will be subject to strict throttling limits.
+2025-09-11 15:47:08,829 - INFO - Loading existing metadata from crime_data/dataset_metadata.json
+2025-09-11 15:47:08,830 - INFO - Loaded 69 datasets from existing metadata
+2025-09-11 15:47:08,830 - INFO - Using existing metadata file
+2025-09-11 15:49:32,847 - WARNING - Requests made without an app_token will be subject to strict throttling limits.
+2025-09-11 15:49:32,848 - INFO - Loading existing metadata from crime_data/dataset_metadata.json
+2025-09-11 15:49:32,848 - INFO - Loaded 69 datasets from existing metadata
+2025-09-11 15:49:32,849 - INFO - Using existing metadata file
+2025-09-11 15:49:32,849 - INFO - Found datasets from 4 domains
+2025-09-11 15:49:32,849 - INFO - Processing up to 1 datasets from data.cityofchicago.org
+2025-09-11 15:49:32,849 - INFO - Processing dataset 1/1: Crimes - 2001 to Present
+2025-09-11 15:49:32,849 - INFO - Downloading dataset: Crimes - 2001 to Present from data.cityofchicago.org
+2025-09-11 15:49:32,849 - WARNING - Requests made without an app_token will be subject to strict throttling limits.
+2025-09-11 15:49:43,120 - ERROR - Error downloading dataset Crimes - 2001 to Present: HTTPSConnectionPool(host='data.cityofchicago.org', port=443): Read timed out. (read timeout=10)
+2025-09-11 15:49:44,125 - INFO - Processing up to 1 datasets from data.lacity.org
+2025-09-11 15:49:44,126 - INFO - Processing dataset 1/1: Crime Data from 2020 to Present
+2025-09-11 15:49:44,127 - INFO - Downloading dataset: Crime Data from 2020 to Present from data.lacity.org
+2025-09-11 15:49:44,127 - WARNING - Requests made without an app_token will be subject to strict throttling limits.
+2025-09-11 15:49:46,012 - INFO - Successfully downloaded 50000 records from Crime Data from 2020 to Present
+2025-09-11 15:49:46,121 - INFO - Extracted 49778 records with valid coordinates from dataset
+2025-09-11 15:49:46,527 - INFO - Saved individual dataset to crime_data/lacity_Crime_Data_from_2020_to_Presen_crime_data.csv
+2025-09-11 15:49:47,532 - INFO - Processing up to 1 datasets from data.cityofnewyork.us
+2025-09-11 15:49:47,533 - INFO - Processing dataset 1/1: Citywide Payroll Data (Fiscal Year)
+2025-09-11 15:49:47,534 - INFO - Downloading dataset: Citywide Payroll Data (Fiscal Year) from data.cityofnewyork.us
+2025-09-11 15:49:47,535 - WARNING - Requests made without an app_token will be subject to strict throttling limits.
+2025-09-11 15:49:49,417 - INFO - Successfully downloaded 50000 records from Citywide Payroll Data (Fiscal Year)
+2025-09-11 15:49:49,436 - WARNING - Could not identify coordinate columns in dataset
+2025-09-11 15:49:50,440 - INFO - Processing up to 1 datasets from data.nola.gov
+2025-09-11 15:49:50,441 - INFO - Processing dataset 1/1: Calls for Service 2013
+2025-09-11 15:49:50,442 - INFO - Downloading dataset: Calls for Service 2013 from data.nola.gov
+2025-09-11 15:49:50,443 - WARNING - Requests made without an app_token will be subject to strict throttling limits.
+2025-09-11 15:49:53,308 - INFO - Successfully downloaded 50000 records from Calls for Service 2013
+2025-09-11 15:49:53,396 - INFO - Extracted 0 records with valid coordinates from dataset
+2025-09-11 15:49:54,402 - INFO - Successfully processed 1 datasets with coordinate data
+2025-09-11 15:49:54,812 - INFO - Combined dataset with 49778 records saved to crime_data/combined_crime_data_20250911_154954.csv
+2025-09-11 15:49:54,845 - INFO - 
+Summary of combined dataset:
+2025-09-11 15:49:54,846 - INFO - Total records: 49778
+2025-09-11 15:49:54,848 - INFO - Cities represented: 1
+2025-09-11 15:49:54,848 - INFO - Columns: source_city, dataset_name, source_url, latitude, longitude, date_occ, date_rptd, time_occ, area, area_name, crm_cd, crm_cd_1, crm_cd_2, crm_cd_3, crm_cd_4, crm_cd_desc, cross_street, dr_no, lat, location, lon, mocodes, part_1_2, premis_cd, premis_desc, rpt_dist_no, status, status_desc, vict_age, vict_descent, vict_sex, weapon_desc, weapon_used_cd
+2025-09-11 15:49:54,848 - INFO - 
+Sample data:
+2025-09-11 15:49:54,848 - INFO -   source_city                     dataset_name  ...                       weapon_desc  weapon_used_cd
+0      lacity  Crime Data from 2020 to Present  ...                               NaN             NaN
+1      lacity  Crime Data from 2020 to Present  ...  KNIFE WITH BLADE 6INCHES OR LESS             200
+2      lacity  Crime Data from 2020 to Present  ...                               NaN             NaN
+3      lacity  Crime Data from 2020 to Present  ...                               NaN             NaN
+4      lacity  Crime Data from 2020 to Present  ...                               NaN             NaN
+
+[5 rows x 33 columns]
+2025-09-11 15:49:54,883 - INFO - 
+Column order: ['source_city', 'dataset_name', 'source_url', 'latitude', 'longitude', 'date_occ', 'date_rptd', 'time_occ', 'area', 'area_name']
+2025-09-11 16:36:13,036 - INFO - Loading existing metadata from crime_data/dataset_metadata.json
+2025-09-11 16:36:13,037 - INFO - Loaded 69 datasets from existing metadata
+2025-09-11 16:36:13,037 - INFO - Using existing metadata file
+2025-09-11 16:36:13,037 - INFO - Found datasets from 4 domains
+2025-09-11 16:36:13,037 - INFO - Processing up to 1 datasets from data.cityofchicago.org
+2025-09-11 16:36:13,037 - INFO - Processing dataset 1/1: Crimes - 2001 to Present
+2025-09-11 16:36:13,037 - INFO - Downloading dataset: Crimes - 2001 to Present from data.cityofchicago.org
+2025-09-11 16:36:13,441 - ERROR - Error downloading dataset Crimes - 2001 to Present: 403 Client Error: Forbidden.
+	Invalid app_token specified
+2025-09-11 16:36:14,446 - INFO - Processing up to 1 datasets from data.lacity.org
+2025-09-11 16:36:14,447 - INFO - Processing dataset 1/1: Crime Data from 2020 to Present
+2025-09-11 16:36:14,447 - INFO - Downloading dataset: Crime Data from 2020 to Present from data.lacity.org
+2025-09-11 16:36:14,955 - ERROR - Error downloading dataset Crime Data from 2020 to Present: 403 Client Error: Forbidden.
+	Invalid app_token specified
+2025-09-11 16:36:15,957 - INFO - Processing up to 1 datasets from data.cityofnewyork.us
+2025-09-11 16:36:15,958 - INFO - Processing dataset 1/1: Citywide Payroll Data (Fiscal Year)
+2025-09-11 16:36:15,958 - INFO - Downloading dataset: Citywide Payroll Data (Fiscal Year) from data.cityofnewyork.us
+2025-09-11 16:36:16,401 - ERROR - Error downloading dataset Citywide Payroll Data (Fiscal Year): 403 Client Error: Forbidden.
+	Invalid app_token specified
+2025-09-11 16:36:17,408 - INFO - Processing up to 1 datasets from data.nola.gov
+2025-09-11 16:36:17,409 - INFO - Processing dataset 1/1: Calls for Service 2013
+2025-09-11 16:36:17,409 - INFO - Downloading dataset: Calls for Service 2013 from data.nola.gov
+2025-09-11 16:36:17,809 - ERROR - Error downloading dataset Calls for Service 2013: 403 Client Error: Forbidden.
+	Invalid app_token specified
+2025-09-11 16:36:18,815 - INFO - Successfully processed 0 datasets with coordinate data
+2025-09-11 16:36:18,816 - WARNING - No data was successfully processed and combined.
+2025-09-11 16:41:20,933 - INFO - Loading existing metadata from crime_data/dataset_metadata.json
+2025-09-11 16:41:20,933 - INFO - Loaded 69 datasets from existing metadata
+2025-09-11 16:41:20,933 - INFO - Using existing metadata file
+2025-09-11 16:41:20,933 - INFO - Found datasets from 4 domains
+2025-09-11 16:41:20,933 - INFO - Processing up to 1 datasets from data.cityofchicago.org
+2025-09-11 16:41:20,934 - INFO - Processing dataset 1/1: Crimes - 2001 to Present
+2025-09-11 16:41:20,934 - INFO - Downloading dataset: Crimes - 2001 to Present from data.cityofchicago.org
+2025-09-11 16:41:21,173 - ERROR - Error downloading dataset Crimes - 2001 to Present: 403 Client Error: Forbidden.
+	Invalid app_token specified
+2025-09-11 16:41:22,177 - INFO - Processing up to 1 datasets from data.lacity.org
+2025-09-11 16:41:22,178 - INFO - Processing dataset 1/1: Crime Data from 2020 to Present
+2025-09-11 16:41:22,178 - INFO - Downloading dataset: Crime Data from 2020 to Present from data.lacity.org
+2025-09-11 16:41:22,393 - ERROR - Error downloading dataset Crime Data from 2020 to Present: 403 Client Error: Forbidden.
+	Invalid app_token specified
+2025-09-11 16:41:23,396 - INFO - Processing up to 1 datasets from data.cityofnewyork.us
+2025-09-11 16:41:23,396 - INFO - Processing dataset 1/1: Citywide Payroll Data (Fiscal Year)
+2025-09-11 16:41:23,397 - INFO - Downloading dataset: Citywide Payroll Data (Fiscal Year) from data.cityofnewyork.us
+2025-09-11 16:41:23,611 - ERROR - Error downloading dataset Citywide Payroll Data (Fiscal Year): 403 Client Error: Forbidden.
+	Invalid app_token specified
+2025-09-11 16:41:24,618 - INFO - Processing up to 1 datasets from data.nola.gov
+2025-09-11 16:41:24,618 - INFO - Processing dataset 1/1: Calls for Service 2013
+2025-09-11 16:41:24,619 - INFO - Downloading dataset: Calls for Service 2013 from data.nola.gov
+2025-09-11 16:41:24,821 - ERROR - Error downloading dataset Calls for Service 2013: 403 Client Error: Forbidden.
+	Invalid app_token specified
+2025-09-11 16:41:25,827 - INFO - Successfully processed 0 datasets with coordinate data
+2025-09-11 16:41:25,827 - WARNING - No data was successfully processed and combined.
+2025-09-14 18:36:08,168 - INFO - Loading existing metadata from crime_data/dataset_metadata.json
+2025-09-14 18:36:08,169 - INFO - Loaded 69 datasets from existing metadata
+2025-09-14 18:36:08,169 - INFO - Using existing metadata file
+2025-09-14 18:36:08,169 - INFO - Found datasets from 4 domains
+2025-09-14 18:36:08,169 - INFO - Processing up to 1 datasets from data.cityofchicago.org
+2025-09-14 18:36:08,169 - INFO - Processing dataset 1/1: Crimes - 2001 to Present
+2025-09-14 18:36:08,169 - INFO - Downloading dataset: Crimes - 2001 to Present from data.cityofchicago.org
+2025-09-14 18:36:18,401 - ERROR - Error downloading dataset Crimes - 2001 to Present: HTTPSConnectionPool(host='data.cityofchicago.org', port=443): Read timed out. (read timeout=10)
+2025-09-14 18:36:19,405 - INFO - Processing up to 1 datasets from data.lacity.org
+2025-09-14 18:36:19,406 - INFO - Processing dataset 1/1: Crime Data from 2020 to Present
+2025-09-14 18:36:19,407 - INFO - Downloading dataset: Crime Data from 2020 to Present from data.lacity.org
+2025-09-14 18:36:21,350 - INFO - Successfully downloaded 50000 records from Crime Data from 2020 to Present
+2025-09-14 18:36:21,431 - INFO - Extracted 49778 records with valid coordinates from dataset
+2025-09-14 18:36:21,703 - INFO - Saved individual dataset to crime_data/lacity_Crime_Data_from_2020_to_Presen_crime_data.csv
+2025-09-14 18:36:22,708 - INFO - Processing up to 1 datasets from data.cityofnewyork.us
+2025-09-14 18:36:22,709 - INFO - Processing dataset 1/1: Citywide Payroll Data (Fiscal Year)
+2025-09-14 18:36:22,709 - INFO - Downloading dataset: Citywide Payroll Data (Fiscal Year) from data.cityofnewyork.us
+2025-09-14 18:36:25,023 - INFO - Successfully downloaded 50000 records from Citywide Payroll Data (Fiscal Year)
+2025-09-14 18:36:25,037 - WARNING - Could not identify coordinate columns in dataset
+2025-09-14 18:36:26,041 - INFO - Processing up to 1 datasets from data.nola.gov
+2025-09-14 18:36:26,043 - INFO - Processing dataset 1/1: Calls for Service 2013
+2025-09-14 18:36:26,043 - INFO - Downloading dataset: Calls for Service 2013 from data.nola.gov
+2025-09-14 18:36:28,725 - INFO - Successfully downloaded 50000 records from Calls for Service 2013
+2025-09-14 18:36:28,791 - INFO - Extracted 0 records with valid coordinates from dataset
+2025-09-14 18:36:29,795 - INFO - Successfully processed 1 datasets with coordinate data
+2025-09-14 18:36:30,099 - INFO - Combined dataset with 49778 records saved to crime_data/combined_crime_data_20250914_183629.csv
+2025-09-14 18:36:30,131 - INFO - 
+Summary of combined dataset:
+2025-09-14 18:36:30,131 - INFO - Total records: 49778
+2025-09-14 18:36:30,133 - INFO - Cities represented: 1
+2025-09-14 18:36:30,133 - INFO - Columns: source_city, dataset_name, source_url, latitude, longitude, date_occ, date_rptd, time_occ, area, area_name, crm_cd, crm_cd_1, crm_cd_2, crm_cd_3, crm_cd_4, crm_cd_desc, cross_street, dr_no, lat, location, lon, mocodes, part_1_2, premis_cd, premis_desc, rpt_dist_no, status, status_desc, vict_age, vict_descent, vict_sex, weapon_desc, weapon_used_cd
+2025-09-14 18:36:30,133 - INFO - 
+Sample data:
+2025-09-14 18:36:30,133 - INFO -   source_city                     dataset_name  ...                       weapon_desc  weapon_used_cd
+0      lacity  Crime Data from 2020 to Present  ...                               NaN             NaN
+1      lacity  Crime Data from 2020 to Present  ...  KNIFE WITH BLADE 6INCHES OR LESS             200
+2      lacity  Crime Data from 2020 to Present  ...                               NaN             NaN
+3      lacity  Crime Data from 2020 to Present  ...                               NaN             NaN
+4      lacity  Crime Data from 2020 to Present  ...                               NaN             NaN
+
+[5 rows x 33 columns]
+2025-09-14 18:36:30,158 - INFO - 
+Column order: ['source_city', 'dataset_name', 'source_url', 'latitude', 'longitude', 'date_occ', 'date_rptd', 'time_occ', 'area', 'area_name']
+2025-09-14 18:38:01,616 - INFO - Loading existing metadata from crime_data/dataset_metadata.json
+2025-09-14 18:38:01,617 - INFO - Loaded 69 datasets from existing metadata
+2025-09-14 18:38:01,617 - INFO - Using existing metadata file
+2025-09-14 18:38:01,617 - INFO - Found datasets from 4 domains
+2025-09-14 18:38:01,617 - INFO - Processing up to 1 datasets from data.cityofchicago.org
+2025-09-14 18:38:01,617 - INFO - Processing dataset 1/1: Crimes - 2001 to Present
+2025-09-14 18:38:01,617 - INFO - Downloading dataset: Crimes - 2001 to Present from data.cityofchicago.org
+2025-09-14 18:38:12,326 - INFO - Successfully downloaded 50000 records from Crimes - 2001 to Present
+2025-09-14 18:38:12,415 - INFO - Extracted 49940 records with valid coordinates from dataset
+2025-09-14 18:38:12,773 - INFO - Saved individual dataset to crime_data/cityofchicago_Crimes_-_2001_to_Present_crime_data.csv
+2025-09-14 18:38:13,779 - INFO - Processing up to 1 datasets from data.lacity.org
+2025-09-14 18:38:13,779 - INFO - Processing dataset 1/1: Crime Data from 2020 to Present
+2025-09-14 18:38:13,780 - INFO - Downloading dataset: Crime Data from 2020 to Present from data.lacity.org
+2025-09-14 18:38:16,198 - INFO - Successfully downloaded 50000 records from Crime Data from 2020 to Present
+2025-09-14 18:38:16,284 - INFO - Extracted 49778 records with valid coordinates from dataset
+2025-09-14 18:38:16,555 - INFO - Saved individual dataset to crime_data/lacity_Crime_Data_from_2020_to_Presen_crime_data.csv
+2025-09-14 18:38:17,560 - INFO - Processing up to 1 datasets from data.cityofnewyork.us
+2025-09-14 18:38:17,561 - INFO - Processing dataset 1/1: Citywide Payroll Data (Fiscal Year)
+2025-09-14 18:38:17,561 - INFO - Downloading dataset: Citywide Payroll Data (Fiscal Year) from data.cityofnewyork.us
+2025-09-14 18:38:19,060 - INFO - Successfully downloaded 50000 records from Citywide Payroll Data (Fiscal Year)
+2025-09-14 18:38:19,074 - WARNING - Could not identify coordinate columns in dataset
+2025-09-14 18:38:20,079 - INFO - Processing up to 1 datasets from data.nola.gov
+2025-09-14 18:38:20,080 - INFO - Processing dataset 1/1: Calls for Service 2013
+2025-09-14 18:38:20,080 - INFO - Downloading dataset: Calls for Service 2013 from data.nola.gov
+2025-09-14 18:38:22,392 - INFO - Successfully downloaded 50000 records from Calls for Service 2013
+2025-09-14 18:38:22,459 - INFO - Extracted 0 records with valid coordinates from dataset
+2025-09-14 18:38:23,462 - INFO - Successfully processed 2 datasets with coordinate data
+2025-09-14 18:38:24,266 - INFO - Combined dataset with 99718 records saved to crime_data/combined_crime_data_20250914_183823.csv
+2025-09-14 18:38:24,300 - INFO - 
+Summary of combined dataset:
+2025-09-14 18:38:24,301 - INFO - Total records: 99718
+2025-09-14 18:38:24,302 - INFO - Cities represented: 2
+2025-09-14 18:38:24,303 - INFO - Columns: source_city, dataset_name, source_url, latitude, longitude, date, date_occ, date_rptd, updated_on, time_occ, :@computed_region_43wa_7qmu, :@computed_region_6mkv_f3dw, :@computed_region_8hcu_yrd4, :@computed_region_awaf_s7ux, :@computed_region_bdys_3d7i, :@computed_region_d3ds_rm58, :@computed_region_d9mm_jgwp, :@computed_region_rpca_8um6, :@computed_region_vrxf_vc4k, area, area_name, arrest, beat, block, case_number, community_area, crm_cd, crm_cd_1, crm_cd_2, crm_cd_3, crm_cd_4, crm_cd_desc, cross_street, description, district, domestic, dr_no, fbi_code, id, iucr, lat, location, location_description, lon, mocodes, part_1_2, premis_cd, premis_desc, primary_type, rpt_dist_no, status, status_desc, vict_age, vict_descent, vict_sex, ward, weapon_desc, weapon_used_cd, x_coordinate, y_coordinate, year
+2025-09-14 18:38:24,303 - INFO - 
+Sample data:
+2025-09-14 18:38:24,303 - INFO -      source_city              dataset_name  ... y_coordinate  year
+0  cityofchicago  Crimes - 2001 to Present  ...      1846065  2025
+1  cityofchicago  Crimes - 2001 to Present  ...      1848099  2025
+2  cityofchicago  Crimes - 2001 to Present  ...      1865282  2025
+3  cityofchicago  Crimes - 2001 to Present  ...      1905778  2025
+4  cityofchicago  Crimes - 2001 to Present  ...      1918658  2025
+
+[5 rows x 61 columns]
+2025-09-14 18:38:24,340 - INFO - 
+Column order: ['source_city', 'dataset_name', 'source_url', 'latitude', 'longitude', 'date', 'date_occ', 'date_rptd', 'updated_on', 'time_occ']
