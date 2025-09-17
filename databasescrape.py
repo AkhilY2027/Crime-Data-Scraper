@@ -271,20 +271,33 @@ class CrimeDatasetScraper:
 		domain = dataset["domain"]
 		name = dataset["name"]
 		
-		# Generate the expected filename for this dataset
+		# Create organized folder structure
 		city = domain.split(".")[1]
-		dataset_safe_name = name.replace(" ", "_").replace("/", "_")[:30]
-		expected_filename = f"{self.output_dir}/{city}_{dataset_safe_name}_crime_data.csv"
+		city_folder = f"{self.output_dir}/Downloaded_Datasets/{city.title()}"
+		os.makedirs(city_folder, exist_ok=True)
+		
+		# Generate filenames
+		dataset_safe_name = name.replace(" ", "_").replace("/", "_").replace("(", "").replace(")", "")[:50]
+		dataset_file = f"{city_folder}/{dataset_safe_name}.csv"
+		metadata_file = f"{city_folder}/{dataset_safe_name}_metadata.json"
 		
 		# Check if file already exists
-		if os.path.exists(expected_filename) and not force_redownload:
-			logger.info(f"Dataset already exists: {expected_filename}, loading from file")
+		if os.path.exists(dataset_file) and not force_redownload:
+			logger.info(f"Dataset already exists: {dataset_file}, loading from file")
 			try:
-				df = pd.read_csv(expected_filename)
+				# Load the dataset
+				df = pd.read_csv(dataset_file)
+				
+				# Load the metadata to reconstruct coordinate info
+				if os.path.exists(metadata_file):
+					with open(metadata_file, 'r') as f:
+						saved_metadata = json.load(f)
+						dataset.update(saved_metadata)  # Update dataset with saved metadata
+				
 				logger.info(f"Successfully loaded {len(df)} records from existing file: {name}")
 				return df
 			except Exception as e:
-				logger.warning(f"Error loading existing file {expected_filename}: {e}, will re-download")
+				logger.warning(f"Error loading existing file {dataset_file}: {e}, will re-download")
 		
 		logger.info(f"Downloading dataset: {name} from {domain}")
 		
@@ -307,13 +320,35 @@ class CrimeDatasetScraper:
 			df["source_url"] = dataset["link"]
 			df["dataset_name"] = name
 			
-			# Get column information for coordinate extraction
+			# Get and save column information for coordinate extraction
 			if isinstance(data, list) and len(data) > 0:
 				sample = data[0]
 				columns = list(sample.keys())
-				dataset["columns"] = [{"fieldName": col} for col in columns]
+				# Add our source columns to the metadata
+				all_columns = columns + ["source_city", "source_url", "dataset_name"]
+				dataset["columns"] = [{"fieldName": col} for col in all_columns]
+				
+				# Save enhanced metadata for future use
+				enhanced_metadata = {
+					"original_columns": [{"fieldName": col} for col in columns],
+					"all_columns": dataset["columns"],
+					"has_coordinates": any(
+						coord_term in col.lower()
+						for col in all_columns
+						for coord_term in ["latitude", "longitude", "lat", "lon", "y_coord", "x_coord", 
+										  "point", "location", "coordinates"]
+					),
+					"coordinate_info": self.find_coordinate_columns(dataset["columns"])
+				}
+				
+				# Save metadata to file
+				with open(metadata_file, 'w') as f:
+					json.dump(enhanced_metadata, f, indent=2)
 			
-			logger.info(f"Successfully downloaded {len(df)} records from {name}")
+			# Save the dataset
+			df.to_csv(dataset_file, index=False)
+			logger.info(f"Successfully downloaded and saved {len(df)} records from {name}")
+			logger.info(f"Saved to: {dataset_file}")
 			
 			return df
 			
@@ -366,8 +401,28 @@ class CrimeDatasetScraper:
 		if df is None or df.empty:
 			return None
 		
-		# Find coordinate columns using unified method
-		coord_info = self.find_coordinate_columns(dataset["columns"])
+		# Try to get coordinate info from enhanced metadata first
+		coord_info = None
+		try:
+			# Build the metadata file path
+			city = dataset["domain"].split(".")[1]
+			city_dir = os.path.join(self.output_dir, "Downloaded_Datasets", city)
+			dataset_safe_name = dataset["name"].replace(" ", "_").replace("/", "_")[:30]
+			metadata_file = os.path.join(city_dir, f"{dataset_safe_name}_metadata.json")
+			
+			if os.path.exists(metadata_file):
+				with open(metadata_file, 'r') as f:
+					metadata = json.load(f)
+					if "coordinate_info" in metadata:
+						coord_info = metadata["coordinate_info"]
+						logger.info(f"Using cached coordinate info from metadata: {metadata_file}")
+		except Exception as e:
+			logger.warning(f"Could not load coordinate info from metadata: {e}")
+		
+		# Fall back to detecting coordinate columns if no cached info available
+		if coord_info is None:
+			coord_info = self.find_coordinate_columns(dataset.get("columns", []))
+			logger.info("Using real-time coordinate detection")
 		
 		# Make column names lowercase for easier processing
 		df.columns = [col.lower() for col in df.columns]
@@ -530,12 +585,7 @@ class CrimeDatasetScraper:
 						all_dfs.append(df_with_coords)
 						processed_count += 1
 						
-						# Save individual dataset with unique naming
-						city = dataset["domain"].split(".")[1]
-						dataset_safe_name = dataset["name"].replace(" ", "_").replace("/", "_")[:30]
-						filename = f"{self.output_dir}/{city}_{dataset_safe_name}_crime_data.csv"
-						df_with_coords.to_csv(filename, index=False)
-						logger.info(f"Saved individual dataset to {filename}")
+						logger.info(f"Successfully processed dataset: {dataset['name']} with {len(df_with_coords)} records")
 						
 				# Add delay to avoid rate limiting
 				time.sleep(1)
@@ -549,9 +599,13 @@ class CrimeDatasetScraper:
 			# Reorder columns for the combined dataset to ensure consistent ordering
 			combined_df = self.reorder_columns(combined_df)
 			
+			# Create Combined_Datasets folder
+			combined_dir = os.path.join(self.output_dir, "Combined_Datasets")
+			os.makedirs(combined_dir, exist_ok=True)
+			
 			# Save combined dataset
 			timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-			combined_file = f"{self.output_dir}/combined_crime_data_{timestamp}.csv"
+			combined_file = os.path.join(combined_dir, f"combined_crime_data_{timestamp}.csv")
 			combined_df.to_csv(combined_file, index=False)
 			
 			logger.info(f"Combined dataset with {len(combined_df)} records saved to {combined_file}")
