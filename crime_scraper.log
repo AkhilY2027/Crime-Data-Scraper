@@ -399,3 +399,165 @@ Sample data:
 [5 rows x 61 columns]
 2025-09-14 18:38:24,340 - INFO - 
 Column order: ['source_city', 'dataset_name', 'source_url', 'latitude', 'longitude', 'date', 'date_occ', 'date_rptd', 'updated_on', 'time_occ']
+2025-09-15 14:54:41,905 - INFO - Loading existing metadata from crime_data/dataset_metadata.json
+2025-09-15 14:54:41,906 - INFO - Loaded 69 datasets from existing metadata
+2025-09-15 14:54:41,906 - INFO - Using existing metadata file
+2025-09-15 14:54:41,906 - INFO - Found datasets from 4 domains
+2025-09-15 14:54:41,906 - INFO - Processing up to 10 datasets from data.cityofchicago.org
+2025-09-15 14:54:41,906 - INFO - Processing dataset 1/10: Crimes - 2001 to Present
+2025-09-15 14:54:41,906 - INFO - Downloading dataset: Crimes - 2001 to Present from data.cityofchicago.org
+2025-09-15 14:54:52,167 - ERROR - Error downloading dataset Crimes - 2001 to Present: HTTPSConnectionPool(host='data.cityofchicago.org', port=443): Read timed out. (read timeout=10)
+2025-09-15 14:54:53,173 - INFO - Processing dataset 2/10: Traffic Crashes - Crashes
+2025-09-15 14:54:53,174 - INFO - Downloading dataset: Traffic Crashes - Crashes from data.cityofchicago.org
+2025-09-15 14:55:03,327 - ERROR - Error downloading dataset Traffic Crashes - Crashes: HTTPSConnectionPool(host='data.cityofchicago.org', port=443): Read timed out. (read timeout=10)
+2025-09-15 14:55:04,333 - INFO - Processing dataset 3/10: Police Stations
+2025-09-15 14:55:04,334 - INFO - Downloading dataset: Police Stations from data.cityofchicago.org
+2025-09-15 14:55:04,829 - INFO - Successfully downloaded 23 records from Police Stations
+2025-09-15 14:55:04,833 - INFO - Extracted 23 records with valid coordinates from dataset
+2025-09-15 14:55:04,840 - INFO - Saved individual dataset to crime_data/cityofchicago_Police_Stations_crime_data.csv
+2025-09-15 14:55:05,846 - INFO - Processing dataset 4/10: Towed Vehicles
+2025-09-15 14:55:05,847 - INFO - Downloading dataset: Towed Vehicles from data.cityofchicago.org
+2025-09-15 14:55:06,563 - INFO - Successfully downloaded 7263 records from Towed Vehicles
+2025-09-15 14:55:06,563 - WARNING - Could not identify coordinate columns in dataset
+2025-09-15 14:55:07,569 - INFO - Processing dataset 5/10: Crimes - One year prior to present
+2025-09-15 14:55:07,569 - INFO - Downloading dataset: Crimes - One year prior to present from data.cityofchicago.org
+2025-09-15 14:55:14,512 - INFO - Successfully downloaded 50000 records from Crimes - One year prior to present
+2025-09-15 14:55:14,615 - INFO - Extracted 49999 records with valid coordinates from dataset
+2025-09-15 14:55:15,065 - INFO - Saved individual dataset to crime_data/cityofchicago_Crimes_-_One_year_prior_to_pre_crime_data.csv
+2025-09-15 14:55:16,070 - INFO - Processing dataset 6/10: Traffic Crashes - Vehicles
+2025-09-15 14:55:16,071 - INFO - Downloading dataset: Traffic Crashes - Vehicles from data.cityofchicago.org
+2025-09-15 14:55:26,232 - ERROR - Error downloading dataset Traffic Crashes - Vehicles: HTTPSConnectionPool(host='data.cityofchicago.org', port=443): Read timed out. (read timeout=10)
+2025-09-15 14:55:27,257 - INFO - Processing dataset 7/10: Violence Reduction - Victims of Homicides and Non-Fatal Shootings
+2025-09-15 14:55:27,257 - INFO - Downloading dataset: Violence Reduction - Victims of Homicides and Non-Fatal Shootings from data.cityofchicago.org
+2025-09-15 14:55:33,523 - INFO - Successfully downloaded 50000 records from Violence Reduction - Victims of Homicides and Non-Fatal Shootings
+2025-09-15 14:55:33,711 - INFO - Extracted 49994 records with valid coordinates from dataset
+2025-09-15 14:55:34,417 - INFO - Saved individual dataset to crime_data/cityofchicago_Violence_Reduction_-_Victims_o_crime_data.csv
+2025-09-15 14:55:35,419 - INFO - Processing dataset 8/10: Crimes - 2015
+2025-09-15 14:55:35,420 - INFO - Downloading dataset: Crimes - 2015 from data.cityofchicago.org
+2025-09-15 14:55:49,142 - INFO - Successfully downloaded 50000 records from Crimes - 2015
+2025-09-15 14:55:49,258 - INFO - Extracted 47965 records with valid coordinates from dataset
+2025-09-15 14:55:49,686 - INFO - Saved individual dataset to crime_data/cityofchicago_Crimes_-_2015_crime_data.csv
+2025-09-15 14:55:50,691 - INFO - Processing dataset 9/10: Violence Reduction - Shotspotter Alerts - Historical
+2025-09-15 14:55:50,692 - INFO - Downloading dataset: Violence Reduction - Shotspotter Alerts - Historical from data.cityofchicago.org
+2025-09-15 14:55:55,781 - INFO - Successfully downloaded 50000 records from Violence Reduction - Shotspotter Alerts - Historical
+2025-09-15 14:55:55,888 - INFO - Extracted 50000 records with valid coordinates from dataset
+2025-09-15 14:55:56,407 - INFO - Saved individual dataset to crime_data/cityofchicago_Violence_Reduction_-_Shotspott_crime_data.csv
+2025-09-15 14:55:57,409 - INFO - Processing dataset 10/10: Strategic Subject List - Historical
+2025-09-15 14:55:57,409 - INFO - Downloading dataset: Strategic Subject List - Historical from data.cityofchicago.org
+2025-09-15 14:56:00,388 - INFO - Successfully downloaded 50000 records from Strategic Subject List - Historical
+2025-09-15 14:56:00,465 - INFO - Extracted 0 records with valid coordinates from dataset
+2025-09-15 14:56:01,467 - INFO - Processing up to 10 datasets from data.lacity.org
+2025-09-15 14:56:01,468 - INFO - Processing dataset 1/9: Crime Data from 2020 to Present
+2025-09-15 14:56:01,468 - INFO - Downloading dataset: Crime Data from 2020 to Present from data.lacity.org
+2025-09-15 14:56:04,244 - INFO - Successfully downloaded 50000 records from Crime Data from 2020 to Present
+2025-09-15 14:56:04,371 - INFO - Extracted 49778 records with valid coordinates from dataset
+2025-09-15 14:56:04,787 - INFO - Saved individual dataset to crime_data/lacity_Crime_Data_from_2020_to_Presen_crime_data.csv
+2025-09-15 14:56:05,791 - INFO - Processing dataset 2/9: Crime Data from 2010 to 2019
+2025-09-15 14:56:05,791 - INFO - Downloading dataset: Crime Data from 2010 to 2019 from data.lacity.org
+2025-09-15 14:56:16,426 - INFO - Successfully downloaded 50000 records from Crime Data from 2010 to 2019
+2025-09-15 14:56:16,546 - INFO - Extracted 49998 records with valid coordinates from dataset
+2025-09-15 14:56:16,980 - INFO - Saved individual dataset to crime_data/lacity_Crime_Data_from_2010_to_2019_crime_data.csv
+2025-09-15 14:56:17,983 - INFO - Processing dataset 3/9: Arrest Data from 2010 to 2019
+2025-09-15 14:56:17,983 - INFO - Downloading dataset: Arrest Data from 2010 to 2019 from data.lacity.org
+2025-09-15 14:56:20,681 - INFO - Successfully downloaded 50000 records from Arrest Data from 2010 to 2019
+2025-09-15 14:56:20,798 - INFO - Extracted 49924 records with valid coordinates from dataset
+2025-09-15 14:56:21,299 - INFO - Saved individual dataset to crime_data/lacity_Arrest_Data_from_2010_to_2019_crime_data.csv
+2025-09-15 14:56:22,302 - INFO - Processing dataset 4/9: Traffic Collision Data from 2010 to Present
+2025-09-15 14:56:22,302 - INFO - Downloading dataset: Traffic Collision Data from 2010 to Present from data.lacity.org
+2025-09-15 14:56:25,060 - INFO - Successfully downloaded 50000 records from Traffic Collision Data from 2010 to Present
+2025-09-15 14:56:25,116 - INFO - Extracted 0 records with valid coordinates from dataset
+2025-09-15 14:56:26,121 - INFO - Processing dataset 5/9: Prostitution along N Western Ave
+2025-09-15 14:56:26,121 - INFO - Downloading dataset: Prostitution along N Western Ave from data.lacity.org
+2025-09-15 14:56:26,839 - INFO - Successfully downloaded 1749 records from Prostitution along N Western Ave
+2025-09-15 14:56:26,878 - INFO - Extracted 0 records with valid coordinates from dataset
+2025-09-15 14:56:27,883 - INFO - Processing dataset 6/9: Arrest Data from 2020 to Present
+2025-09-15 14:56:27,885 - INFO - Downloading dataset: Arrest Data from 2020 to Present from data.lacity.org
+2025-09-15 14:56:41,847 - INFO - Successfully downloaded 50000 records from Arrest Data from 2020 to Present
+2025-09-15 14:56:41,969 - INFO - Extracted 49515 records with valid coordinates from dataset
+2025-09-15 14:56:42,517 - INFO - Saved individual dataset to crime_data/lacity_Arrest_Data_from_2020_to_Prese_crime_data.csv
+2025-09-15 14:56:43,522 - INFO - Processing dataset 7/9: LAHD Affordable Housing Projects List (2003 to Present)
+2025-09-15 14:56:43,523 - INFO - Downloading dataset: LAHD Affordable Housing Projects List (2003 to Present) from data.lacity.org
+2025-09-15 14:56:45,194 - INFO - Successfully downloaded 608 records from LAHD Affordable Housing Projects List (2003 to Present)
+2025-09-15 14:56:45,204 - INFO - Extracted 608 records with valid coordinates from dataset
+2025-09-15 14:56:45,216 - INFO - Saved individual dataset to crime_data/lacity_LAHD_Affordable_Housing_Projec_crime_data.csv
+2025-09-15 14:56:46,221 - INFO - Processing dataset 8/9: Domestic Violence Calls from 2020 to Present
+2025-09-15 14:56:46,222 - INFO - Downloading dataset: Domestic Violence Calls from 2020 to Present from data.lacity.org
+2025-09-15 14:56:48,598 - INFO - Successfully downloaded 50000 records from Domestic Violence Calls from 2020 to Present
+2025-09-15 14:56:48,698 - INFO - Extracted 49742 records with valid coordinates from dataset
+2025-09-15 14:56:49,140 - INFO - Saved individual dataset to crime_data/lacity_Domestic_Violence_Calls_from_2_crime_data.csv
+2025-09-15 14:56:50,145 - INFO - Processing dataset 9/9: Marijuana Data
+2025-09-15 14:56:50,146 - INFO - Downloading dataset: Marijuana Data from data.lacity.org
+2025-09-15 14:56:53,818 - INFO - Successfully downloaded 24667 records from Marijuana Data
+2025-09-15 14:56:53,856 - INFO - Extracted 0 records with valid coordinates from dataset
+2025-09-15 14:56:54,860 - INFO - Processing up to 10 datasets from data.cityofnewyork.us
+2025-09-15 14:56:54,861 - INFO - Processing dataset 1/9: Citywide Payroll Data (Fiscal Year)
+2025-09-15 14:56:54,861 - INFO - Downloading dataset: Citywide Payroll Data (Fiscal Year) from data.cityofnewyork.us
+2025-09-15 14:57:00,265 - INFO - Successfully downloaded 50000 records from Citywide Payroll Data (Fiscal Year)
+2025-09-15 14:57:00,287 - WARNING - Could not identify coordinate columns in dataset
+2025-09-15 14:57:01,292 - INFO - Processing dataset 2/9: NYPD Arrest Data (Year to Date)
+2025-09-15 14:57:01,293 - INFO - Downloading dataset: NYPD Arrest Data (Year to Date) from data.cityofnewyork.us
+2025-09-15 14:57:06,621 - INFO - Successfully downloaded 50000 records from NYPD Arrest Data (Year to Date)
+2025-09-15 14:57:06,744 - INFO - Extracted 49903 records with valid coordinates from dataset
+2025-09-15 14:57:07,195 - INFO - Saved individual dataset to crime_data/cityofnewyork_NYPD_Arrest_Data_(Year_to_Date_crime_data.csv
+2025-09-16 19:44:53,579 - INFO - No existing metadata found, searching for datasets
+2025-09-16 19:44:53,579 - INFO - Searching for crime datasets with geographical coordinates
+2025-09-16 19:44:53,579 - INFO - Searching for crime datasets in data.cityofchicago.org
+2025-09-16 19:45:02,465 - INFO - Found dataset with coordinates: Crimes - 2001 to Present
+2025-09-16 19:45:02,705 - INFO - Found dataset with coordinates: Traffic Crashes - Crashes
+2025-09-16 19:45:03,386 - INFO - Found dataset with coordinates: Police Stations
+2025-09-16 19:45:04,829 - INFO - Found dataset with coordinates: Towed Vehicles
+2025-09-16 19:45:05,648 - INFO - Found dataset with coordinates: Crimes - One year prior to present
+2025-09-16 19:45:08,198 - INFO - Found dataset with coordinates: Traffic Crashes - Vehicles
+2025-09-16 19:45:10,044 - INFO - Found dataset with coordinates: Violence Reduction - Victims of Homicides and Non-Fatal Shootings
+2025-09-16 20:35:42,242 - INFO - No existing metadata found, searching for datasets
+2025-09-16 20:35:42,242 - INFO - Searching for crime datasets with geographical coordinates
+2025-09-16 20:35:42,242 - INFO - Searching for crime datasets in data.cityofchicago.org
+2025-09-16 20:35:57,041 - INFO - Found dataset with coordinates: Crimes - 2001 to Present
+2025-09-16 20:36:05,235 - INFO - Found dataset with coordinates: Traffic Crashes - Crashes
+2025-09-16 20:36:05,472 - INFO - Found dataset with coordinates: Police Stations
+2025-09-16 20:36:13,352 - INFO - Found dataset with coordinates: Towed Vehicles
+2025-09-16 20:36:13,732 - INFO - Found dataset with coordinates: Crimes - One year prior to present
+2025-09-16 20:36:16,319 - INFO - Found dataset with coordinates: Traffic Crashes - Vehicles
+2025-09-16 20:36:18,222 - INFO - Found dataset with coordinates: Violence Reduction - Victims of Homicides and Non-Fatal Shootings
+2025-09-16 20:36:24,512 - INFO - Found dataset with coordinates: Crimes - 2015
+2025-09-16 20:36:26,947 - INFO - Found dataset with coordinates: Violence Reduction - Shotspotter Alerts - Historical
+2025-09-16 20:36:28,508 - INFO - Found dataset with coordinates: Strategic Subject List - Historical
+2025-09-16 20:36:28,659 - INFO - Found dataset with coordinates: Crimes - 2020
+2025-09-16 20:36:29,227 - INFO - Found dataset with coordinates: Crimes - 2022
+2025-09-16 20:36:29,370 - INFO - Found dataset with coordinates: Crimes - 2018
+2025-09-16 20:36:30,860 - INFO - Found dataset with coordinates: Crimes - 2014
+2025-09-16 20:36:31,269 - INFO - Found dataset with coordinates: Crimes - 2024
+2025-09-16 20:36:31,784 - INFO - Found dataset with coordinates: Crimes - 2017
+2025-09-16 20:36:33,727 - INFO - Found dataset with coordinates: Crimes - 2019
+2025-09-16 20:36:34,344 - INFO - Found dataset with coordinates: Crimes - 2013
+2025-09-16 20:36:34,597 - INFO - Found 18 potential crime datasets with coordinates
+2025-09-16 20:36:34,601 - INFO - Found 18 potential datasets
+2025-09-16 20:36:34,604 - INFO - Dataset metadata saved to crime_data/dataset_metadata.json
+2025-09-16 20:36:34,604 - INFO - Found datasets from 1 domains
+2025-09-16 20:36:34,604 - INFO - Processing up to 1 datasets from data.cityofchicago.org
+2025-09-16 20:36:34,604 - INFO - Processing dataset 1/1: Crimes - 2001 to Present
+2025-09-16 20:36:34,604 - INFO - Downloading dataset: Crimes - 2001 to Present from data.cityofchicago.org
+2025-09-16 20:36:54,976 - INFO - Successfully downloaded 50000 records from Crimes - 2001 to Present
+2025-09-16 20:36:55,007 - INFO - Coordinate detection: type=separate_columns, lat_col=latitude, lon_col=longitude, loc_col=location_description
+2025-09-16 20:36:55,011 - INFO - Extracted coordinates from separate columns: latitude, longitude
+2025-09-16 20:36:55,129 - INFO - Extracted 49927 records with valid coordinates from dataset
+2025-09-16 20:36:55,662 - INFO - Saved individual dataset to crime_data/cityofchicago_Crimes_-_2001_to_Present_crime_data.csv
+2025-09-16 20:36:56,663 - INFO - Successfully processed 1 datasets with coordinate data
+2025-09-16 20:36:57,225 - INFO - Combined dataset with 49927 records saved to crime_data/combined_crime_data_20250916_203656.csv
+2025-09-16 20:36:57,238 - INFO - 
+Summary of combined dataset:
+2025-09-16 20:36:57,238 - INFO - Total records: 49927
+2025-09-16 20:36:57,241 - INFO - Cities represented: 1
+2025-09-16 20:36:57,241 - INFO - Columns: source_city, dataset_name, source_url, latitude, longitude, date, updated_on, :@computed_region_43wa_7qmu, :@computed_region_6mkv_f3dw, :@computed_region_8hcu_yrd4, :@computed_region_awaf_s7ux, :@computed_region_bdys_3d7i, :@computed_region_d3ds_rm58, :@computed_region_d9mm_jgwp, :@computed_region_rpca_8um6, :@computed_region_vrxf_vc4k, arrest, beat, block, case_number, community_area, description, district, domestic, fbi_code, id, iucr, location, location_description, primary_type, ward, x_coordinate, y_coordinate, year
+2025-09-16 20:36:57,241 - INFO - 
+Sample data:
+2025-09-16 20:36:57,241 - INFO -      source_city              dataset_name  ... y_coordinate  year
+0  cityofchicago  Crimes - 2001 to Present  ...      1939645  2025
+1  cityofchicago  Crimes - 2001 to Present  ...      1882263  2025
+2  cityofchicago  Crimes - 2001 to Present  ...      1839152  2025
+3  cityofchicago  Crimes - 2001 to Present  ...      1936269  2025
+4  cityofchicago  Crimes - 2001 to Present  ...      1843632  2025
+
+[5 rows x 34 columns]
+2025-09-16 20:36:57,279 - INFO - 
+Column order: ['source_city', 'dataset_name', 'source_url', 'latitude', 'longitude', 'date', 'updated_on', ':@computed_region_43wa_7qmu', ':@computed_region_6mkv_f3dw', ':@computed_region_8hcu_yrd4']

@@ -41,7 +41,8 @@ class CrimeDatasetScraper:
 		self.output_dir = output_dir
 		# Initialize with API token to avoid throttling (app_token is sufficient for read access)
 		self.app_token = "MpxAuF8Aa0dpEv3GJnSP8OnoX"
-		self.client = Socrata("api.us.socrata.com", self.app_token, timeout=60)
+		self.timeout = 60
+		self.client = Socrata("api.us.socrata.com", self.app_token, timeout=self.timeout)
 		self.datasets = []
 		self.combined_data = pd.DataFrame()
 		
@@ -99,14 +100,14 @@ class CrimeDatasetScraper:
 		keywords = ["crime", "police", "incident"]
 		city_domains = [
 			"data.cityofchicago.org", 
-			"data.sfgov.org", 
-			"data.seattle.gov", 
-			"data.lacity.org", 
-			"data.cityofnewyork.us",
-			"data.baltimorecity.gov", 
-			"data.austintexas.gov", 
-			"data.cityofboston.gov", 
-			"data.nola.gov"
+			# "data.sfgov.org", 
+			# "data.seattle.gov", 
+			# "data.lacity.org", 
+			# "data.cityofnewyork.us",
+			# "data.baltimorecity.gov", 
+			# "data.austintexas.gov", 
+			# "data.cityofboston.gov", 
+			# "data.nola.gov"
 		]
 		
 		all_results = []
@@ -116,7 +117,7 @@ class CrimeDatasetScraper:
 			logger.info(f"Searching for crime datasets in {domain}")
 			try:
 				# Create a client for this specific domain with API token
-				domain_client = Socrata(domain, self.app_token)
+				domain_client = Socrata(domain, self.app_token, timeout=self.timeout)
 				
 				# Get all datasets for this domain
 				datasets = domain_client.datasets(limit=limit)
@@ -204,12 +205,15 @@ class CrimeDatasetScraper:
 			dataset_columns (list): List of column metadata
 		
 		Returns:
-			tuple: (lat_column, lon_column, location_column)
+			dict: Dictionary with coordinate column information
 		"""
-		lat_column = None
-		lon_column = None
-		location_column = None
-		
+		result = {
+			"lat_col": None,
+			"long_col": None,
+			"location_col": None,
+			"coordinate_type": None,
+		}
+
 		# Convert column list to more usable format
 		columns = {col["fieldName"].lower(): col["fieldName"] for col in dataset_columns}
 		
@@ -217,38 +221,48 @@ class CrimeDatasetScraper:
 		for lat_key in ["latitude", "lat", "y_coord", "y"]:
 			for col in columns:
 				if lat_key in col:
-					lat_column = columns[col]
+					result["lat_col"] = columns[col]
 					break
-			if lat_column:
+			if result["lat_col"]:
 				break
 		
 		# Look for longitude columns
 		for lon_key in ["longitude", "long", "lon", "x_coord", "x"]:
 			for col in columns:
 				if lon_key in col:
-					lon_column = columns[col]
+					result["long_col"] = columns[col]
 					break
-			if lon_column:
+			if result["long_col"]:
 				break
 		
 		# Look for point/location columns that might contain both lat and long
 		for loc_key in ["location", "point", "coordinates", "geom", "geometry"]:
 			for col in columns:
 				if loc_key in col:
-					location_column = columns[col]
+					result["location_col"] = columns[col]
 					break
-			if location_column:
+			if result["location_col"]:
 				break
-		
-		return lat_column, lon_column, location_column
+
+		# Based on what we found, determine coordinate type
+		if result["lat_col"] and result["long_col"]:
+			result["coordinate_type"] = "separate_columns"
+		elif result["location_col"]:
+			result["coordinate_type"] = "combined_column"
+		else:
+			result["coordinate_type"] = "none"
+
+		return result
 	
-	def download_dataset(self, dataset, limit=50000):
+	# TODO: There is a limit to this dataset here
+	def download_dataset(self, dataset, limit=50000, force_redownload=True):
 		"""
 		Download a specific dataset
 		
 		Args:
 			dataset (dict): Dataset information
 			limit (int): Maximum number of records to download
+			force_redownload (bool): If True, download even if file exists
 			
 		Returns:
 			pandas.DataFrame: Downloaded data
@@ -257,11 +271,26 @@ class CrimeDatasetScraper:
 		domain = dataset["domain"]
 		name = dataset["name"]
 		
+		# Generate the expected filename for this dataset
+		city = domain.split(".")[1]
+		dataset_safe_name = name.replace(" ", "_").replace("/", "_")[:30]
+		expected_filename = f"{self.output_dir}/{city}_{dataset_safe_name}_crime_data.csv"
+		
+		# Check if file already exists
+		if os.path.exists(expected_filename) and not force_redownload:
+			logger.info(f"Dataset already exists: {expected_filename}, loading from file")
+			try:
+				df = pd.read_csv(expected_filename)
+				logger.info(f"Successfully loaded {len(df)} records from existing file: {name}")
+				return df
+			except Exception as e:
+				logger.warning(f"Error loading existing file {expected_filename}: {e}, will re-download")
+		
 		logger.info(f"Downloading dataset: {name} from {domain}")
 		
 		try:
 			# Initialize a client for this specific domain with API token
-			client = Socrata(domain, self.app_token)
+			client = Socrata(domain, self.app_token, timeout=self.timeout)
 			
 			# Download the data
 			data = client.get(dataset_id, limit=limit)
@@ -292,6 +321,37 @@ class CrimeDatasetScraper:
 			logger.error(f"Error downloading dataset {name}: {str(e)}")
 			return None
 	
+	def _extract_separate_coordinates(self, df, lat_col, lon_col):
+		"""Extract coordinates from separate latitude and longitude columns"""
+		if lat_col in df.columns and lon_col in df.columns:
+			df["latitude"] = df[lat_col]
+			df["longitude"] = df[lon_col]
+			logger.info(f"Extracted coordinates from separate columns: {lat_col}, {lon_col}")
+			return True
+		return False
+
+	def _extract_combined_coordinates(self, df, loc_col):
+		"""Extract coordinates from a combined location column"""
+		if loc_col not in df.columns:
+			return False
+		
+		if df[loc_col].dtype != object:
+			return False
+		
+		# Get a sample to determine the format
+		sample = df[loc_col].dropna().iloc[0] if not df[loc_col].dropna().empty else None
+		if not sample:
+			return False
+		try:
+			# Try to extract coordinates from a location object like {"latitude": 41.8, "longitude": -87.6}
+			location = json.loads(sample) if isinstance(sample, str) and sample else {}
+			df["latitude"] = df[loc_col].apply(lambda x: float(x.get("latitude", x.get("lat", None))) if x else None)
+			df["longitude"] = df[loc_col].apply(lambda x: float(x.get("longitude", x.get("lng", x.get("long", None)))) if x else None)
+			return True
+		except Exception as e:
+			logger.error(f"Error extracting combined coordinates from {loc_col}: {str(e)}")
+			return False
+
 	def extract_coordinates(self, df, dataset):
 		"""
 		Extract latitude and longitude from the dataset
@@ -306,60 +366,34 @@ class CrimeDatasetScraper:
 		if df is None or df.empty:
 			return None
 		
-		# Find coordinate columns
-		lat_col, lon_col, loc_col = self.find_coordinate_columns(dataset["columns"])
+		# Find coordinate columns using unified method
+		coord_info = self.find_coordinate_columns(dataset["columns"])
 		
 		# Make column names lowercase for easier processing
 		df.columns = [col.lower() for col in df.columns]
 		
-		# Standardize column names in case they were changed to lowercase
-		if lat_col:
-			lat_col = lat_col.lower()
-		if lon_col:
-			lon_col = lon_col.lower()
-		if loc_col:
-			loc_col = loc_col.lower()
+		# Standardize column names to lowercase
+		lat_col = coord_info["lat_col"].lower() if coord_info["lat_col"] else None
+		lon_col = coord_info["long_col"].lower() if coord_info["long_col"] else None
+		loc_col = coord_info["location_col"].lower() if coord_info["location_col"] else None
 		
-		# Case 1: Direct lat/lon columns
-		if lat_col in df.columns and lon_col in df.columns:
-			df["latitude"] = df[lat_col]
-			df["longitude"] = df[lon_col]
-			
-		# Case 2: Location object/point column
-		elif loc_col in df.columns:
-			# Check if it's a string containing lat/lon
-			if df[loc_col].dtype == object:
-				try:
-					# Try to extract coordinates from a location object like {"latitude": 41.8, "longitude": -87.6}
-					sample = df[loc_col].dropna().iloc[0] if not df[loc_col].dropna().empty else None
-					
-					if sample and isinstance(sample, str) and "{" in sample:
-						# Looks like JSON
-						df["location_obj"] = df[loc_col].apply(lambda x: json.loads(x) if isinstance(x, str) and x else {})
-						df["latitude"] = df["location_obj"].apply(lambda x: float(x.get("latitude", x.get("lat", None))) if x else None)
-						df["longitude"] = df["location_obj"].apply(lambda x: float(x.get("longitude", x.get("lng", x.get("long", None)))) if x else None)
-						df = df.drop("location_obj", axis=1)
-					
-					# Try to extract from coordinates in format "POINT (-87.6 41.8)"
-					elif sample and isinstance(sample, str) and "POINT" in sample.upper():
-						def extract_point(point_str):
-							if not isinstance(point_str, str):
-								return (None, None)
-							try:
-								# Extract numbers from POINT format
-								coords = point_str.upper().replace("POINT", "").replace("(", "").replace(")", "").strip().split()
-								if len(coords) >= 2:
-									return float(coords[1]), float(coords[0])  # lat, lon
-								return (None, None)
-							except:
-								return (None, None)
-						
-						df[["latitude", "longitude"]] = df[loc_col].apply(extract_point).apply(pd.Series)
-						
-				except Exception as e:
-					logger.warning(f"Could not extract coordinates from location column: {e}")
+		logger.info(f"Coordinate detection: type={coord_info['coordinate_type']}, "
+					f"lat_col={lat_col}, lon_col={lon_col}, loc_col={loc_col}")
+
+		# Extract coordinates based on detected type
+		if coord_info["coordinate_type"] == "separate_columns":
+			success = self._extract_separate_coordinates(df, lat_col, lon_col)
+		elif coord_info["coordinate_type"] == "combined_column":
+			success = self._extract_combined_coordinates(df, loc_col)
+		else:
+			logger.warning("No coordinate columns detected")
+			return None
 		
-		# Filter out rows without coordinates
+		if not success:
+			logger.warning("Failed to extract coordinates")
+			return None
+
+		# Filter out invalid coordinates
 		if "latitude" in df.columns and "longitude" in df.columns:
 			# Convert to numeric and filter
 			df["latitude"] = pd.to_numeric(df["latitude"], errors="coerce")
@@ -374,9 +408,9 @@ class CrimeDatasetScraper:
 			logger.info(f"Extracted {len(df_filtered)} records with valid coordinates from dataset")
 			
 			return df_filtered
-		
-		logger.warning(f"Could not identify coordinate columns in dataset")
-		return None
+		else:
+			logger.warning("Latitude and/or longitude columns missing after extraction")
+			return None
 	
 	def reorder_columns(self, df):
 		"""
@@ -443,13 +477,14 @@ class CrimeDatasetScraper:
 		
 		return df[final_column_order]
 
-	def process_datasets_balanced(self, max_per=1, records_per_dataset=50000):
+	def process_datasets_balanced(self, max_per=10, records_per_dataset=50000, force_redownload=True):
 		"""
 		Download and process up to max_per datasets from each domain
 		
 		Args:
 			max_per (int): Maximum datasets to process per domain
 			records_per_dataset (int): Maximum records per dataset
+			force_redownload (bool): If True, re-download even if files exist
 			
 		Returns:
 			pandas.DataFrame: Combined dataset
@@ -482,7 +517,7 @@ class CrimeDatasetScraper:
 				logger.info(f"Processing dataset {i+1}/{len(datasets_to_process)}: {dataset['name']}")
 				
 				# Download the dataset
-				df = self.download_dataset(dataset, limit=records_per_dataset)
+				df = self.download_dataset(dataset, limit=records_per_dataset, force_redownload=force_redownload)
 				
 				if df is not None:
 					# Extract coordinates
@@ -560,7 +595,7 @@ def main():
 		scraper.save_dataset_metadata()
 	
 	# Process datasets - up to max_per from each domain
-	combined_data = scraper.process_datasets_balanced(max_per=1, records_per_dataset=50000)
+	combined_data = scraper.process_datasets_balanced(max_per=1, records_per_dataset=50000, force_redownload=False)
 	
 	if combined_data is not None:
 		# Print summary
