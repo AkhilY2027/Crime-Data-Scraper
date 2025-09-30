@@ -1,3 +1,4 @@
-./James Files
+James Files
 *.log
-./crime_data
+crime_data
+.venv

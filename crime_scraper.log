@@ -561,3 +561,380 @@ Sample data:
 [5 rows x 34 columns]
 2025-09-16 20:36:57,279 - INFO - 
 Column order: ['source_city', 'dataset_name', 'source_url', 'latitude', 'longitude', 'date', 'updated_on', ':@computed_region_43wa_7qmu', ':@computed_region_6mkv_f3dw', ':@computed_region_8hcu_yrd4']
+2025-09-23 13:00:16,576 - INFO - No existing metadata found, searching for datasets
+2025-09-23 13:00:16,576 - INFO - Searching for crime datasets with geographical coordinates
+2025-09-23 13:00:16,576 - INFO - Searching for crime datasets in data.cityofchicago.org
+2025-09-23 13:00:21,668 - INFO - Found dataset with coordinates: Crimes - 2001 to Present
+2025-09-23 13:00:23,285 - INFO - Found dataset with coordinates: Traffic Crashes - Crashes
+2025-09-23 13:00:23,602 - INFO - Found dataset with coordinates: Police Stations
+2025-09-23 13:00:25,141 - INFO - Found dataset with coordinates: Towed Vehicles
+2025-09-23 13:00:25,729 - INFO - Found dataset with coordinates: Crimes - One year prior to present
+2025-09-23 13:00:29,043 - INFO - Found dataset with coordinates: Traffic Crashes - Vehicles
+2025-09-23 13:00:29,636 - INFO - Found dataset with coordinates: Violence Reduction - Victims of Homicides and Non-Fatal Shootings
+2025-09-23 13:00:34,037 - INFO - Found dataset with coordinates: Crimes - 2015
+2025-09-23 13:00:34,785 - INFO - Found dataset with coordinates: Violence Reduction - Shotspotter Alerts - Historical
+2025-09-23 13:00:35,165 - INFO - Found dataset with coordinates: Strategic Subject List - Historical
+2025-09-23 13:00:36,235 - INFO - Found dataset with coordinates: Crimes - 2022
+2025-09-23 13:00:36,596 - INFO - Found dataset with coordinates: Crimes - 2020
+2025-09-23 13:00:36,897 - INFO - Found dataset with coordinates: Crimes - 2018
+2025-09-23 13:00:37,622 - INFO - Found dataset with coordinates: Crimes - 2014
+2025-09-23 13:00:38,297 - INFO - Found dataset with coordinates: Crimes - 2024
+2025-09-23 13:00:39,335 - INFO - Found dataset with coordinates: Crimes - 2017
+2025-09-23 13:00:40,025 - INFO - Found dataset with coordinates: Crimes - 2019
+2025-09-23 13:00:40,650 - INFO - Found dataset with coordinates: Crimes - 2013
+2025-09-23 13:00:40,947 - INFO - Found 18 potential crime datasets with coordinates
+2025-09-23 13:00:40,951 - INFO - Found 18 potential datasets
+2025-09-23 13:00:40,953 - INFO - Dataset metadata saved to crime_data/dataset_metadata.json
+2025-09-23 13:00:40,953 - INFO - Found datasets from 1 domains
+2025-09-23 13:00:40,953 - INFO - Processing up to 1 datasets from data.cityofchicago.org
+2025-09-23 13:00:40,953 - INFO - Processing dataset 1/1: Crimes - 2001 to Present
+2025-09-23 13:00:40,955 - INFO - Downloading dataset: Crimes - 2001 to Present from data.cityofchicago.org
+2025-09-23 13:01:01,516 - INFO - Successfully downloaded and saved 50000 records from Crimes - 2001 to Present
+2025-09-23 13:01:01,516 - INFO - Saved to: crime_data/Downloaded_Datasets/Cityofchicago/Crimes_-_2001_to_Present.csv
+2025-09-23 13:01:01,534 - INFO - Found date columns to combine: ['date', 'updated_on']
+2025-09-23 13:01:01,563 - INFO - Successfully parsed date column: date
+2025-09-23 13:01:01,573 - INFO - Successfully parsed date column: updated_on
+2025-09-23 13:01:07,932 - INFO - Combined dates: 50000 valid dates, 48366 valid times
+2025-09-23 13:01:07,933 - INFO - Using cached coordinate info from metadata: crime_data/Downloaded_Datasets/cityofchicago/Crimes_-_2001_to_Present_metadata.json
+2025-09-23 13:01:07,933 - INFO - Coordinate detection: type=separate_columns, lat_col=latitude, lon_col=longitude, loc_col=location_description
+2025-09-23 13:01:07,936 - INFO - Extracted coordinates from separate columns: latitude, longitude
+2025-09-23 13:01:08,061 - INFO - Extracted 49920 records with valid coordinates from dataset
+2025-09-23 13:01:08,117 - INFO - Successfully processed dataset: Crimes - 2001 to Present with 49920 records
+2025-09-23 13:01:09,122 - INFO - Successfully processed 1 datasets with coordinate data
+2025-09-23 13:01:09,731 - INFO - Combined dataset with 49920 records saved to crime_data/Combined_Datasets/combined_crime_data_20250923_130109.csv
+2025-09-23 13:01:09,745 - INFO - 
+Summary of combined dataset:
+2025-09-23 13:01:09,746 - INFO - Total records: 49920
+2025-09-23 13:01:09,747 - INFO - Cities represented: 1
+2025-09-23 13:01:09,747 - INFO - Columns: source_city, dataset_name, source_url, latitude, longitude, combined_date, combined_time, date, updated_on, :@computed_region_43wa_7qmu, :@computed_region_6mkv_f3dw, :@computed_region_8hcu_yrd4, :@computed_region_awaf_s7ux, :@computed_region_bdys_3d7i, :@computed_region_d3ds_rm58, :@computed_region_d9mm_jgwp, :@computed_region_rpca_8um6, :@computed_region_vrxf_vc4k, arrest, beat, block, case_number, community_area, description, district, domestic, fbi_code, id, iucr, location, location_description, primary_type, ward, x_coordinate, y_coordinate, year
+2025-09-23 13:01:09,747 - INFO - 
+Sample data:
+2025-09-23 13:01:09,747 - INFO -      source_city              dataset_name  ... y_coordinate  year
+0  cityofchicago  Crimes - 2001 to Present  ...      1873142  2025
+1  cityofchicago  Crimes - 2001 to Present  ...      1915766  2025
+2  cityofchicago  Crimes - 2001 to Present  ...      1942166  2025
+3  cityofchicago  Crimes - 2001 to Present  ...      1861460  2025
+4  cityofchicago  Crimes - 2001 to Present  ...      1863608  2025
+
+[5 rows x 36 columns]
+2025-09-23 13:01:09,788 - INFO - 
+Column order: ['source_city', 'dataset_name', 'source_url', 'latitude', 'longitude', 'combined_date', 'combined_time', 'date', 'updated_on', ':@computed_region_43wa_7qmu']
+2025-09-23 13:05:23,167 - INFO - Loading existing metadata from crime_data/dataset_metadata.json
+2025-09-23 13:05:23,168 - INFO - Loaded 18 datasets from existing metadata
+2025-09-23 13:05:23,168 - INFO - Using existing metadata file
+2025-09-23 13:05:23,168 - INFO - Found datasets from 1 domains
+2025-09-23 13:05:23,168 - INFO - Processing up to 1 datasets from data.cityofchicago.org
+2025-09-23 13:05:23,168 - INFO - Processing dataset 1/1: Crimes - 2001 to Present
+2025-09-23 13:05:23,168 - INFO - Dataset already exists: crime_data/Downloaded_Datasets/Cityofchicago/Crimes_-_2001_to_Present.csv, loading from file
+2025-09-23 13:05:23,425 - INFO - Successfully loaded 50000 records from existing file: Crimes - 2001 to Present
+2025-09-23 13:05:23,425 - INFO - Found date columns to combine: ['date', 'updated_on']
+2025-09-23 13:05:23,448 - INFO - Successfully parsed date column: date
+2025-09-23 13:05:23,453 - INFO - Successfully parsed date column: updated_on
+2025-09-23 13:05:29,838 - INFO - Combined dates: 50000 valid dates, 48366 valid times
+2025-09-23 13:05:29,850 - INFO - Removed original date column: date
+2025-09-23 13:05:29,858 - INFO - Removed original date column: updated_on
+2025-09-23 13:05:29,860 - INFO - Using cached coordinate info from metadata: crime_data/Downloaded_Datasets/cityofchicago/Crimes_-_2001_to_Present_metadata.json
+2025-09-23 13:05:29,860 - INFO - Coordinate detection: type=separate_columns, lat_col=latitude, lon_col=longitude, loc_col=location_description
+2025-09-23 13:05:29,861 - INFO - Extracted coordinates from separate columns: latitude, longitude
+2025-09-23 13:05:29,890 - INFO - Extracted 49920 records with valid coordinates from dataset
+2025-09-23 13:05:29,898 - INFO - Successfully processed dataset: Crimes - 2001 to Present with 49920 records
+2025-09-23 13:05:30,900 - INFO - Successfully processed 1 datasets with coordinate data
+2025-09-23 13:05:31,654 - INFO - Combined dataset with 49920 records saved to crime_data/Combined_Datasets/combined_crime_data_20250923_130530.csv
+2025-09-23 13:05:31,657 - INFO - 
+Summary of combined dataset:
+2025-09-23 13:05:31,657 - INFO - Total records: 49920
+2025-09-23 13:05:31,659 - INFO - Cities represented: 1
+2025-09-23 13:05:31,659 - INFO - Columns: source_city, dataset_name, source_url, latitude, longitude, combined_date, combined_time, :@computed_region_43wa_7qmu, :@computed_region_6mkv_f3dw, :@computed_region_8hcu_yrd4, :@computed_region_awaf_s7ux, :@computed_region_bdys_3d7i, :@computed_region_d3ds_rm58, :@computed_region_d9mm_jgwp, :@computed_region_rpca_8um6, :@computed_region_vrxf_vc4k, arrest, beat, block, case_number, community_area, description, district, domestic, fbi_code, id, iucr, location, location_description, primary_type, ward, x_coordinate, y_coordinate, year
+2025-09-23 13:05:31,659 - INFO - 
+Sample data:
+2025-09-23 13:05:31,659 - INFO -      source_city              dataset_name  ... y_coordinate  year
+0  cityofchicago  Crimes - 2001 to Present  ...    1873142.0  2025
+1  cityofchicago  Crimes - 2001 to Present  ...    1915766.0  2025
+2  cityofchicago  Crimes - 2001 to Present  ...    1942166.0  2025
+3  cityofchicago  Crimes - 2001 to Present  ...    1861460.0  2025
+4  cityofchicago  Crimes - 2001 to Present  ...    1863608.0  2025
+
+[5 rows x 34 columns]
+2025-09-23 13:05:31,698 - INFO - 
+Column order: ['source_city', 'dataset_name', 'source_url', 'latitude', 'longitude', 'combined_date', 'combined_time', ':@computed_region_43wa_7qmu', ':@computed_region_6mkv_f3dw', ':@computed_region_8hcu_yrd4']
+2025-09-26 11:45:30,894 - INFO - Loading existing metadata from crime_data/dataset_metadata.json
+2025-09-26 11:45:30,895 - INFO - Loaded 18 datasets from existing metadata
+2025-09-26 11:45:30,895 - INFO - Using existing metadata file
+2025-09-26 11:45:30,895 - INFO - Found datasets from 1 domains
+2025-09-26 11:45:30,895 - INFO - Processing up to 100 datasets from data.cityofchicago.org
+2025-09-26 11:45:30,895 - INFO - Processing dataset 1/18: Crimes - 2001 to Present
+2025-09-26 11:45:30,895 - INFO - Dataset already exists: crime_data/Downloaded_Datasets/Cityofchicago/Crimes_-_2001_to_Present.csv, loading from file
+2025-09-26 11:45:31,076 - INFO - Successfully loaded 50000 records from existing file: Crimes - 2001 to Present
+2025-09-26 11:45:31,077 - INFO - Found date columns to combine: ['date', 'updated_on']
+2025-09-26 11:45:31,089 - INFO - Successfully parsed date column: date
+2025-09-26 11:45:31,092 - INFO - Successfully parsed date column: updated_on
+2025-09-26 11:45:33,568 - INFO - Combined dates: 50000 valid dates, 48366 valid times
+2025-09-26 11:45:33,575 - INFO - Removed original date column: date
+2025-09-26 11:45:33,580 - INFO - Removed original date column: updated_on
+2025-09-26 11:45:33,581 - INFO - Using cached coordinate info from metadata: crime_data/Downloaded_Datasets/cityofchicago/Crimes_-_2001_to_Present_metadata.json
+2025-09-26 11:45:33,581 - INFO - Coordinate detection: type=separate_columns, lat_col=latitude, lon_col=longitude, loc_col=location_description
+2025-09-26 11:45:33,582 - INFO - Extracted coordinates from separate columns: latitude, longitude
+2025-09-26 11:45:33,596 - INFO - Extracted 49920 records with valid coordinates from dataset
+2025-09-26 11:45:33,602 - INFO - Successfully processed dataset: Crimes - 2001 to Present with 49920 records
+2025-09-26 11:45:34,607 - INFO - Processing dataset 2/18: Traffic Crashes - Crashes
+2025-09-26 11:45:34,608 - INFO - Downloading dataset: Traffic Crashes - Crashes from data.cityofchicago.org
+2025-09-26 11:45:46,461 - INFO - Successfully downloaded and saved 50000 records from Traffic Crashes - Crashes
+2025-09-26 11:45:46,461 - INFO - Saved to: crime_data/Downloaded_Datasets/Cityofchicago/Traffic_Crashes_-_Crashes.csv
+2025-09-26 11:45:46,476 - INFO - Found date columns to combine: ['crash_date', 'date_police_notified', 'crash_date_est_i']
+2025-09-26 11:45:46,486 - INFO - Successfully parsed date column: crash_date
+2025-09-26 11:45:46,496 - INFO - Successfully parsed date column: date_police_notified
+2025-09-26 11:45:49,098 - INFO - Combined dates: 50000 valid dates, 49861 valid times
+2025-09-26 11:45:49,121 - INFO - Removed original date column: crash_date
+2025-09-26 11:45:49,145 - INFO - Removed original date column: date_police_notified
+2025-09-26 11:45:49,171 - INFO - Removed original date column: crash_date_est_i
+2025-09-26 11:45:49,172 - INFO - Using cached coordinate info from metadata: crime_data/Downloaded_Datasets/cityofchicago/Traffic_Crashes_-_Crashes_metadata.json
+2025-09-26 11:45:49,172 - INFO - Coordinate detection: type=separate_columns, lat_col=latitude, lon_col=longitude, loc_col=location
+2025-09-26 11:45:49,173 - INFO - Extracted coordinates from separate columns: latitude, longitude
+2025-09-26 11:45:49,280 - INFO - Extracted 49487 records with valid coordinates from dataset
+2025-09-26 11:45:49,335 - INFO - Successfully processed dataset: Traffic Crashes - Crashes with 49487 records
+2025-09-26 11:45:50,336 - INFO - Processing dataset 3/18: Police Stations
+2025-09-26 11:45:50,337 - INFO - Downloading dataset: Police Stations from data.cityofchicago.org
+2025-09-26 11:45:53,352 - INFO - Successfully downloaded and saved 23 records from Police Stations
+2025-09-26 11:45:53,352 - INFO - Saved to: crime_data/Downloaded_Datasets/Cityofchicago/Police_Stations.csv
+2025-09-26 11:45:53,369 - INFO - No date columns found to combine
+2025-09-26 11:45:53,369 - INFO - Using cached coordinate info from metadata: crime_data/Downloaded_Datasets/cityofchicago/Police_Stations_metadata.json
+2025-09-26 11:45:53,369 - INFO - Coordinate detection: type=separate_columns, lat_col=latitude, lon_col=longitude, loc_col=location
+2025-09-26 11:45:53,369 - INFO - Extracted coordinates from separate columns: latitude, longitude
+2025-09-26 11:45:53,370 - INFO - Extracted 23 records with valid coordinates from dataset
+2025-09-26 11:45:53,370 - INFO - Successfully processed dataset: Police Stations with 23 records
+2025-09-26 11:45:54,375 - INFO - Processing dataset 4/18: Towed Vehicles
+2025-09-26 11:45:54,376 - INFO - Downloading dataset: Towed Vehicles from data.cityofchicago.org
+2025-09-26 11:45:55,567 - INFO - Successfully downloaded and saved 7188 records from Towed Vehicles
+2025-09-26 11:45:55,567 - INFO - Saved to: crime_data/Downloaded_Datasets/Cityofchicago/Towed_Vehicles.csv
+2025-09-26 11:45:55,568 - INFO - Found date columns to combine: ['tow_date']
+2025-09-26 11:45:55,569 - INFO - Successfully parsed date column: tow_date
+2025-09-26 11:45:55,918 - INFO - Combined dates: 7188 valid dates, 0 valid times
+2025-09-26 11:45:55,919 - INFO - Removed original date column: tow_date
+2025-09-26 11:45:55,919 - INFO - Using cached coordinate info from metadata: crime_data/Downloaded_Datasets/cityofchicago/Towed_Vehicles_metadata.json
+2025-09-26 11:45:55,919 - INFO - Coordinate detection: type=none, lat_col=plate, lon_col=None, loc_col=None
+2025-09-26 11:45:55,919 - WARNING - No coordinate columns detected
+2025-09-26 11:45:56,922 - INFO - Processing dataset 5/18: Crimes - One year prior to present
+2025-09-26 11:45:56,923 - INFO - Downloading dataset: Crimes - One year prior to present from data.cityofchicago.org
+2025-09-26 11:46:00,846 - INFO - Successfully downloaded and saved 50000 records from Crimes - One year prior to present
+2025-09-26 11:46:00,847 - INFO - Saved to: crime_data/Downloaded_Datasets/Cityofchicago/Crimes_-_One_year_prior_to_present.csv
+2025-09-26 11:46:00,856 - INFO - Found date columns to combine: ['date_of_occurrence']
+2025-09-26 11:46:00,869 - INFO - Successfully parsed date column: date_of_occurrence
+2025-09-26 11:46:03,349 - INFO - Combined dates: 50000 valid dates, 48241 valid times
+2025-09-26 11:46:03,363 - INFO - Removed original date column: date_of_occurrence
+2025-09-26 11:46:03,363 - INFO - Using real-time coordinate detection
+2025-09-26 11:46:03,363 - INFO - Coordinate detection: type=separate_columns, lat_col=latitude, lon_col=longitude, loc_col=_location_description
+2025-09-26 11:46:03,364 - INFO - Extracted coordinates from separate columns: latitude, longitude
+2025-09-26 11:46:03,417 - INFO - Extracted 49999 records with valid coordinates from dataset
+2025-09-26 11:46:03,436 - INFO - Successfully processed dataset: Crimes - One year prior to present with 49999 records
+2025-09-26 11:46:04,441 - INFO - Processing dataset 6/18: Traffic Crashes - Vehicles
+2025-09-26 11:46:04,442 - INFO - Downloading dataset: Traffic Crashes - Vehicles from data.cityofchicago.org
+2025-09-26 11:46:28,374 - INFO - Successfully downloaded and saved 50000 records from Traffic Crashes - Vehicles
+2025-09-26 11:46:28,374 - INFO - Saved to: crime_data/Downloaded_Datasets/Cityofchicago/Traffic_Crashes_-_Vehicles.csv
+2025-09-26 11:46:28,387 - INFO - Found date columns to combine: ['crash_date']
+2025-09-26 11:46:28,398 - INFO - Successfully parsed date column: crash_date
+2025-09-26 11:46:30,996 - INFO - Combined dates: 50000 valid dates, 49867 valid times
+2025-09-26 11:46:31,033 - INFO - Removed original date column: crash_date
+2025-09-26 11:46:31,034 - INFO - Using cached coordinate info from metadata: crime_data/Downloaded_Datasets/cityofchicago/Traffic_Crashes_-_Vehicles_metadata.json
+2025-09-26 11:46:31,034 - INFO - Coordinate detection: type=combined_column, lat_col=lic_plate_state, lon_col=None, loc_col=first_contact_point
+2025-09-26 11:46:31,037 - ERROR - Error extracting combined coordinates from first_contact_point: Expecting value: line 1 column 1 (char 0)
+2025-09-26 11:46:31,037 - WARNING - Failed to extract coordinates
+2025-09-26 11:46:32,050 - INFO - Processing dataset 7/18: Violence Reduction - Victims of Homicides and Non-Fatal Shootings
+2025-09-26 11:46:32,051 - INFO - Downloading dataset: Violence Reduction - Victims of Homicides and Non-Fatal Shootings from data.cityofchicago.org
+2025-09-26 11:46:42,622 - INFO - Successfully downloaded and saved 50000 records from Violence Reduction - Victims of Homicides and Non-Fatal Shootings
+2025-09-26 11:46:42,622 - INFO - Saved to: crime_data/Downloaded_Datasets/Cityofchicago/Violence_Reduction_-_Victims_of_Homicides_and_Non-.csv
+2025-09-26 11:46:42,654 - INFO - Found date columns to combine: ['date', 'updated']
+2025-09-26 11:46:42,663 - INFO - Successfully parsed date column: date
+2025-09-26 11:46:42,672 - INFO - Successfully parsed date column: updated
+2025-09-26 11:46:45,390 - INFO - Combined dates: 50000 valid dates, 49825 valid times
+2025-09-26 11:46:45,415 - INFO - Removed original date column: date
+2025-09-26 11:46:45,439 - INFO - Removed original date column: updated
+2025-09-26 11:46:45,439 - INFO - Using real-time coordinate detection
+2025-09-26 11:46:45,439 - INFO - Coordinate detection: type=separate_columns, lat_col=victimization_primary, lon_col=sex, loc_col=location_description
+2025-09-26 11:46:45,440 - INFO - Extracted coordinates from separate columns: victimization_primary, sex
+2025-09-26 11:46:45,480 - INFO - Extracted 0 records with valid coordinates from dataset
+2025-09-26 11:46:46,495 - INFO - Processing dataset 8/18: Crimes - 2015
+2025-09-26 11:46:46,496 - INFO - Downloading dataset: Crimes - 2015 from data.cityofchicago.org
+2025-09-26 11:46:54,987 - INFO - Successfully downloaded and saved 50000 records from Crimes - 2015
+2025-09-26 11:46:54,987 - INFO - Saved to: crime_data/Downloaded_Datasets/Cityofchicago/Crimes_-_2015.csv
+2025-09-26 11:46:55,034 - INFO - Found date columns to combine: ['date', 'updated_on']
+2025-09-26 11:46:55,050 - INFO - Successfully parsed date column: date
+2025-09-26 11:46:55,057 - INFO - Successfully parsed date column: updated_on
+2025-09-26 11:46:57,575 - INFO - Combined dates: 50000 valid dates, 49426 valid times
+2025-09-26 11:46:57,588 - INFO - Removed original date column: date
+2025-09-26 11:46:57,601 - INFO - Removed original date column: updated_on
+2025-09-26 11:46:57,601 - INFO - Using cached coordinate info from metadata: crime_data/Downloaded_Datasets/cityofchicago/Crimes_-_2015_metadata.json
+2025-09-26 11:46:57,602 - INFO - Coordinate detection: type=combined_column, lat_col=primary_type, lon_col=None, loc_col=location_description
+2025-09-26 11:46:57,605 - ERROR - Error extracting combined coordinates from location_description: Expecting value: line 1 column 1 (char 0)
+2025-09-26 11:46:57,605 - WARNING - Failed to extract coordinates
+2025-09-26 11:46:58,612 - INFO - Processing dataset 9/18: Violence Reduction - Shotspotter Alerts - Historical
+2025-09-26 11:46:58,612 - INFO - Downloading dataset: Violence Reduction - Shotspotter Alerts - Historical from data.cityofchicago.org
+2025-09-26 11:47:13,995 - INFO - Successfully downloaded and saved 50000 records from Violence Reduction - Shotspotter Alerts - Historical
+2025-09-26 11:47:13,995 - INFO - Saved to: crime_data/Downloaded_Datasets/Cityofchicago/Violence_Reduction_-_Shotspotter_Alerts_-_Historic.csv
+2025-09-26 11:47:14,027 - INFO - Found date columns to combine: ['date']
+2025-09-26 11:47:14,035 - INFO - Successfully parsed date column: date
+2025-09-26 11:47:16,682 - INFO - Combined dates: 50000 valid dates, 50000 valid times
+2025-09-26 11:47:16,698 - INFO - Removed original date column: date
+2025-09-26 11:47:16,699 - INFO - Using real-time coordinate detection
+2025-09-26 11:47:16,699 - INFO - Coordinate detection: type=separate_columns, lat_col=latitude, lon_col=longitude, loc_col=location
+2025-09-26 11:47:16,700 - INFO - Extracted coordinates from separate columns: latitude, longitude
+2025-09-26 11:47:16,761 - INFO - Extracted 50000 records with valid coordinates from dataset
+2025-09-26 11:47:16,784 - INFO - Successfully processed dataset: Violence Reduction - Shotspotter Alerts - Historical with 50000 records
+2025-09-26 11:47:17,788 - INFO - Processing dataset 10/18: Strategic Subject List - Historical
+2025-09-26 11:47:17,789 - INFO - Downloading dataset: Strategic Subject List - Historical from data.cityofchicago.org
+2025-09-26 11:47:24,860 - INFO - Successfully downloaded and saved 50000 records from Strategic Subject List - Historical
+2025-09-26 11:47:24,860 - INFO - Saved to: crime_data/Downloaded_Datasets/Cityofchicago/Strategic_Subject_List_-_Historical.csv
+2025-09-26 11:47:24,876 - INFO - Found date columns to combine: ['latest_date', 'ssl_last_ptv_date', 'latest_narcotic_arr_date', 'latest_domestic_arr_date', 'latest_weapon_arr_date']
+2025-09-26 11:47:24,881 - INFO - Successfully parsed date column: latest_date
+2025-09-26 11:47:24,883 - INFO - Successfully parsed date column: ssl_last_ptv_date
+2025-09-26 11:47:24,885 - INFO - Successfully parsed date column: latest_narcotic_arr_date
+2025-09-26 11:47:24,888 - INFO - Successfully parsed date column: latest_domestic_arr_date
+2025-09-26 11:47:24,889 - INFO - Successfully parsed date column: latest_weapon_arr_date
+2025-09-26 11:47:27,405 - INFO - Combined dates: 50000 valid dates, 0 valid times
+2025-09-26 11:47:27,424 - INFO - Removed original date column: latest_date
+2025-09-26 11:47:27,442 - INFO - Removed original date column: ssl_last_ptv_date
+2025-09-26 11:47:27,461 - INFO - Removed original date column: latest_narcotic_arr_date
+2025-09-26 11:47:27,481 - INFO - Removed original date column: latest_domestic_arr_date
+2025-09-26 11:47:27,501 - INFO - Removed original date column: latest_weapon_arr_date
+2025-09-26 11:47:27,502 - INFO - Using real-time coordinate detection
+2025-09-26 11:47:27,502 - INFO - Coordinate detection: type=separate_columns, lat_col=predictor_rat_age_at_latest_arrest, lon_col=sex_code_cd, loc_col=None
+2025-09-26 11:47:27,503 - INFO - Extracted coordinates from separate columns: predictor_rat_age_at_latest_arrest, sex_code_cd
+2025-09-26 11:47:27,543 - INFO - Extracted 0 records with valid coordinates from dataset
+2025-09-26 11:47:28,551 - INFO - Processing dataset 11/18: Crimes - 2022
+2025-09-26 11:47:28,552 - INFO - Downloading dataset: Crimes - 2022 from data.cityofchicago.org
+2025-09-26 11:47:39,514 - INFO - Successfully downloaded and saved 50000 records from Crimes - 2022
+2025-09-26 11:47:39,514 - INFO - Saved to: crime_data/Downloaded_Datasets/Cityofchicago/Crimes_-_2022.csv
+2025-09-26 11:47:39,538 - INFO - Found date columns to combine: ['date', 'updated_on']
+2025-09-26 11:47:39,550 - INFO - Successfully parsed date column: date
+2025-09-26 11:47:39,559 - INFO - Successfully parsed date column: updated_on
+2025-09-26 11:47:42,317 - INFO - Combined dates: 50000 valid dates, 48200 valid times
+2025-09-26 11:47:42,332 - INFO - Removed original date column: date
+2025-09-26 11:47:42,344 - INFO - Removed original date column: updated_on
+2025-09-26 11:47:42,345 - INFO - Using cached coordinate info from metadata: crime_data/Downloaded_Datasets/cityofchicago/Crimes_-_2022_metadata.json
+2025-09-26 11:47:42,345 - INFO - Coordinate detection: type=separate_columns, lat_col=latitude, lon_col=longitude, loc_col=location_description
+2025-09-26 11:47:42,346 - INFO - Extracted coordinates from separate columns: latitude, longitude
+2025-09-26 11:47:42,398 - INFO - Extracted 49233 records with valid coordinates from dataset
+2025-09-26 11:47:42,414 - INFO - Successfully processed dataset: Crimes - 2022 with 49233 records
+2025-09-26 11:47:43,420 - INFO - Processing dataset 12/18: Crimes - 2020
+2025-09-26 11:47:43,420 - INFO - Downloading dataset: Crimes - 2020 from data.cityofchicago.org
+2025-09-26 11:47:48,918 - INFO - Successfully downloaded and saved 50000 records from Crimes - 2020
+2025-09-26 11:47:48,918 - INFO - Saved to: crime_data/Downloaded_Datasets/Cityofchicago/Crimes_-_2020.csv
+2025-09-26 11:47:48,934 - INFO - Found date columns to combine: ['date', 'updated_on']
+2025-09-26 11:47:48,947 - INFO - Successfully parsed date column: date
+2025-09-26 11:47:48,955 - INFO - Successfully parsed date column: updated_on
+2025-09-26 11:47:51,529 - INFO - Combined dates: 50000 valid dates, 48500 valid times
+2025-09-26 11:47:51,542 - INFO - Removed original date column: date
+2025-09-26 11:47:51,555 - INFO - Removed original date column: updated_on
+2025-09-26 11:47:51,555 - INFO - Using cached coordinate info from metadata: crime_data/Downloaded_Datasets/cityofchicago/Crimes_-_2020_metadata.json
+2025-09-26 11:47:51,555 - INFO - Coordinate detection: type=separate_columns, lat_col=latitude, lon_col=longitude, loc_col=location_description
+2025-09-26 11:47:51,556 - INFO - Extracted coordinates from separate columns: latitude, longitude
+2025-09-26 11:47:51,607 - INFO - Extracted 48272 records with valid coordinates from dataset
+2025-09-26 11:47:51,624 - INFO - Successfully processed dataset: Crimes - 2020 with 48272 records
+2025-09-26 11:47:52,629 - INFO - Processing dataset 13/18: Crimes - 2018
+2025-09-26 11:47:52,630 - INFO - Downloading dataset: Crimes - 2018 from data.cityofchicago.org
+2025-09-26 11:47:56,366 - INFO - Successfully downloaded and saved 50000 records from Crimes - 2018
+2025-09-26 11:47:56,366 - INFO - Saved to: crime_data/Downloaded_Datasets/Cityofchicago/Crimes_-_2018.csv
+2025-09-26 11:47:56,384 - INFO - Found date columns to combine: ['date', 'updated_on']
+2025-09-26 11:47:56,398 - INFO - Successfully parsed date column: date
+2025-09-26 11:47:56,406 - INFO - Successfully parsed date column: updated_on
+2025-09-26 11:47:59,244 - INFO - Combined dates: 50000 valid dates, 49309 valid times
+2025-09-26 11:47:59,258 - INFO - Removed original date column: date
+2025-09-26 11:47:59,271 - INFO - Removed original date column: updated_on
+2025-09-26 11:47:59,271 - INFO - Using cached coordinate info from metadata: crime_data/Downloaded_Datasets/cityofchicago/Crimes_-_2018_metadata.json
+2025-09-26 11:47:59,271 - INFO - Coordinate detection: type=separate_columns, lat_col=latitude, lon_col=longitude, loc_col=location_description
+2025-09-26 11:47:59,272 - INFO - Extracted coordinates from separate columns: latitude, longitude
+2025-09-26 11:47:59,327 - INFO - Extracted 48168 records with valid coordinates from dataset
+2025-09-26 11:47:59,349 - INFO - Successfully processed dataset: Crimes - 2018 with 48168 records
+2025-09-26 11:48:00,354 - INFO - Processing dataset 14/18: Crimes - 2014
+2025-09-26 11:48:00,355 - INFO - Downloading dataset: Crimes - 2014 from data.cityofchicago.org
+2025-09-26 11:48:04,243 - INFO - Successfully downloaded and saved 50000 records from Crimes - 2014
+2025-09-26 11:48:04,243 - INFO - Saved to: crime_data/Downloaded_Datasets/Cityofchicago/Crimes_-_2014.csv
+2025-09-26 11:48:04,260 - INFO - Found date columns to combine: ['date', 'updated_on']
+2025-09-26 11:48:04,272 - INFO - Successfully parsed date column: date
+2025-09-26 11:48:04,280 - INFO - Successfully parsed date column: updated_on
+2025-09-26 11:48:06,858 - INFO - Combined dates: 50000 valid dates, 49530 valid times
+2025-09-26 11:48:06,872 - INFO - Removed original date column: date
+2025-09-26 11:48:06,885 - INFO - Removed original date column: updated_on
+2025-09-26 11:48:06,885 - INFO - Using cached coordinate info from metadata: crime_data/Downloaded_Datasets/cityofchicago/Crimes_-_2014_metadata.json
+2025-09-26 11:48:06,885 - INFO - Coordinate detection: type=separate_columns, lat_col=latitude, lon_col=longitude, loc_col=location_description
+2025-09-26 11:48:06,886 - INFO - Extracted coordinates from separate columns: latitude, longitude
+2025-09-26 11:48:06,936 - INFO - Extracted 49580 records with valid coordinates from dataset
+2025-09-26 11:48:06,956 - INFO - Successfully processed dataset: Crimes - 2014 with 49580 records
+2025-09-26 11:48:07,959 - INFO - Processing dataset 15/18: Crimes - 2024
+2025-09-26 11:48:07,959 - INFO - Downloading dataset: Crimes - 2024 from data.cityofchicago.org
+2025-09-26 11:48:16,028 - INFO - Successfully downloaded and saved 50000 records from Crimes - 2024
+2025-09-26 11:48:16,028 - INFO - Saved to: crime_data/Downloaded_Datasets/Cityofchicago/Crimes_-_2024.csv
+2025-09-26 11:48:16,045 - INFO - Found date columns to combine: ['date', 'updated_on']
+2025-09-26 11:48:16,060 - INFO - Successfully parsed date column: date
+2025-09-26 11:48:16,066 - INFO - Successfully parsed date column: updated_on
+2025-09-26 11:48:19,117 - INFO - Combined dates: 50000 valid dates, 48139 valid times
+2025-09-26 11:48:19,130 - INFO - Removed original date column: date
+2025-09-26 11:48:19,142 - INFO - Removed original date column: updated_on
+2025-09-26 11:48:19,143 - INFO - Using cached coordinate info from metadata: crime_data/Downloaded_Datasets/cityofchicago/Crimes_-_2024_metadata.json
+2025-09-26 11:48:19,143 - INFO - Coordinate detection: type=separate_columns, lat_col=latitude, lon_col=longitude, loc_col=location_description
+2025-09-26 11:48:19,144 - INFO - Extracted coordinates from separate columns: latitude, longitude
+2025-09-26 11:48:19,199 - INFO - Extracted 49998 records with valid coordinates from dataset
+2025-09-26 11:48:19,215 - INFO - Successfully processed dataset: Crimes - 2024 with 49998 records
+2025-09-26 11:48:20,216 - INFO - Processing dataset 16/18: Crimes - 2017
+2025-09-26 11:48:20,217 - INFO - Downloading dataset: Crimes - 2017 from data.cityofchicago.org
+2025-09-26 11:48:37,708 - INFO - Successfully downloaded and saved 50000 records from Crimes - 2017
+2025-09-26 11:48:37,708 - INFO - Saved to: crime_data/Downloaded_Datasets/Cityofchicago/Crimes_-_2017.csv
+2025-09-26 11:48:37,723 - INFO - Found date columns to combine: ['date', 'updated_on']
+2025-09-26 11:48:37,741 - INFO - Successfully parsed date column: date
+2025-09-26 11:48:37,749 - INFO - Successfully parsed date column: updated_on
+2025-09-26 11:48:40,352 - INFO - Combined dates: 50000 valid dates, 49318 valid times
+2025-09-26 11:48:40,365 - INFO - Removed original date column: date
+2025-09-26 11:48:40,378 - INFO - Removed original date column: updated_on
+2025-09-26 11:48:40,379 - INFO - Using cached coordinate info from metadata: crime_data/Downloaded_Datasets/cityofchicago/Crimes_-_2017_metadata.json
+2025-09-26 11:48:40,379 - INFO - Coordinate detection: type=separate_columns, lat_col=latitude, lon_col=longitude, loc_col=location_description
+2025-09-26 11:48:40,380 - INFO - Extracted coordinates from separate columns: latitude, longitude
+2025-09-26 11:48:40,431 - INFO - Extracted 48550 records with valid coordinates from dataset
+2025-09-26 11:48:40,451 - INFO - Successfully processed dataset: Crimes - 2017 with 48550 records
+2025-09-26 11:48:41,456 - INFO - Processing dataset 17/18: Crimes - 2019
+2025-09-26 11:48:41,457 - INFO - Downloading dataset: Crimes - 2019 from data.cityofchicago.org
+2025-09-26 11:48:50,174 - INFO - Successfully downloaded and saved 50000 records from Crimes - 2019
+2025-09-26 11:48:50,174 - INFO - Saved to: crime_data/Downloaded_Datasets/Cityofchicago/Crimes_-_2019.csv
+2025-09-26 11:48:50,190 - INFO - Found date columns to combine: ['date', 'updated_on']
+2025-09-26 11:48:50,204 - INFO - Successfully parsed date column: date
+2025-09-26 11:48:50,212 - INFO - Successfully parsed date column: updated_on
+2025-09-26 11:48:53,273 - INFO - Combined dates: 50000 valid dates, 49304 valid times
+2025-09-26 11:48:53,286 - INFO - Removed original date column: date
+2025-09-26 11:48:53,299 - INFO - Removed original date column: updated_on
+2025-09-26 11:48:53,300 - INFO - Using cached coordinate info from metadata: crime_data/Downloaded_Datasets/cityofchicago/Crimes_-_2019_metadata.json
+2025-09-26 11:48:53,300 - INFO - Coordinate detection: type=separate_columns, lat_col=latitude, lon_col=longitude, loc_col=location_description
+2025-09-26 11:48:53,301 - INFO - Extracted coordinates from separate columns: latitude, longitude
+2025-09-26 11:48:53,356 - INFO - Extracted 49393 records with valid coordinates from dataset
+2025-09-26 11:48:53,374 - INFO - Successfully processed dataset: Crimes - 2019 with 49393 records
+2025-09-26 11:48:54,379 - INFO - Processing dataset 18/18: Crimes - 2013
+2025-09-26 11:48:54,380 - INFO - Downloading dataset: Crimes - 2013 from data.cityofchicago.org
+2025-09-26 11:49:03,686 - INFO - Successfully downloaded and saved 50000 records from Crimes - 2013
+2025-09-26 11:49:03,686 - INFO - Saved to: crime_data/Downloaded_Datasets/Cityofchicago/Crimes_-_2013.csv
+2025-09-26 11:49:03,702 - INFO - Found date columns to combine: ['date', 'updated_on']
+2025-09-26 11:49:03,715 - INFO - Successfully parsed date column: date
+2025-09-26 11:49:03,722 - INFO - Successfully parsed date column: updated_on
+2025-09-26 11:49:06,323 - INFO - Combined dates: 50000 valid dates, 49307 valid times
+2025-09-26 11:49:06,338 - INFO - Removed original date column: date
+2025-09-26 11:49:06,351 - INFO - Removed original date column: updated_on
+2025-09-26 11:49:06,352 - INFO - Using cached coordinate info from metadata: crime_data/Downloaded_Datasets/cityofchicago/Crimes_-_2013_metadata.json
+2025-09-26 11:49:06,352 - INFO - Coordinate detection: type=separate_columns, lat_col=latitude, lon_col=longitude, loc_col=location_description
+2025-09-26 11:49:06,353 - INFO - Extracted coordinates from separate columns: latitude, longitude
+2025-09-26 11:49:06,404 - INFO - Extracted 49817 records with valid coordinates from dataset
+2025-09-26 11:49:06,421 - INFO - Successfully processed dataset: Crimes - 2013 with 49817 records
+2025-09-26 11:49:07,424 - INFO - Successfully processed 13 datasets with coordinate data
+2025-09-26 11:49:16,226 - INFO - Combined dataset with 592440 records saved to crime_data/Combined_Datasets/combined_crime_data_20250926_114908.csv
+2025-09-26 11:49:16,316 - INFO - 
+Summary of combined dataset:
+2025-09-26 11:49:16,316 - INFO - Total records: 592440
+2025-09-26 11:49:16,332 - INFO - Cities represented: 1
+2025-09-26 11:49:16,332 - INFO - Columns: source_city, dataset_name, source_url, latitude, longitude, combined_date, combined_time, :@computed_region_43wa_7qmu, :@computed_region_6mkv_f3dw, :@computed_region_8hcu_yrd4, :@computed_region_awaf_s7ux, :@computed_region_bdys_3d7i, :@computed_region_d3ds_rm58, :@computed_region_d9mm_jgwp, :@computed_region_rpca_8um6, :@computed_region_vrxf_vc4k, _iucr, _location_description, _primary_decsription, _secondary_description, address, alignment, area, arrest, beat, beat_of_occurrence, block, case_, case_number, city, community_area, crash_day_of_week, crash_hour, crash_month, crash_record_id, crash_type, damage, day_of_week, description, device_condition, district, district_name, domestic, dooring_i, fax, fbi_cd, fbi_code, first_crash_type, hit_and_run_i, hour, id, illinois_house_district, illinois_senate_district, incident_type_description, injuries_fatal, injuries_incapacitating, injuries_no_indication, injuries_non_incapacitating, injuries_reported_not_evident, injuries_total, injuries_unknown, intersection_related_i, iucr, lane_cnt, lighting_condition, location, location_description, month, most_severe_injury, num_units, phone, photos_taken_i, posted_speed_limit, prim_contributory_cause, primary_type, private_property_i, report_type, road_defect, roadway_surface_cond, rounds, sec_contributory_cause, state, statements_taken_i, street_direction, street_name, street_no, street_outreach_organization, traffic_control_device, trafficway_type, tty, unique_id, ward, weather_condition, website, work_zone_i, work_zone_type, workers_present_i, x_coordinate, y_coordinate, year, zip, zip_code
+2025-09-26 11:49:16,332 - INFO - 
+Sample data:
+2025-09-26 11:49:16,332 - INFO -      source_city              dataset_name                                  source_url  ...  year  zip zip_code
+0  cityofchicago  Crimes - 2001 to Present  https://data.cityofchicago.org/d/ijzp-q8t2  ...  2025  NaN      NaN
+1  cityofchicago  Crimes - 2001 to Present  https://data.cityofchicago.org/d/ijzp-q8t2  ...  2025  NaN      NaN
+2  cityofchicago  Crimes - 2001 to Present  https://data.cityofchicago.org/d/ijzp-q8t2  ...  2025  NaN      NaN
+3  cityofchicago  Crimes - 2001 to Present  https://data.cityofchicago.org/d/ijzp-q8t2  ...  2025  NaN      NaN
+4  cityofchicago  Crimes - 2001 to Present  https://data.cityofchicago.org/d/ijzp-q8t2  ...  2025  NaN      NaN
+
+[5 rows x 102 columns]
+2025-09-26 11:49:16,375 - INFO - 
+Column order: ['source_city', 'dataset_name', 'source_url', 'latitude', 'longitude', 'combined_date', 'combined_time', ':@computed_region_43wa_7qmu', ':@computed_region_6mkv_f3dw', ':@computed_region_8hcu_yrd4']

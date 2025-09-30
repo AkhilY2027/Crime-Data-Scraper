@@ -387,6 +387,93 @@ class CrimeDatasetScraper:
 			logger.error(f"Error extracting combined coordinates from {loc_col}: {str(e)}")
 			return False
 
+	def combine_date_columns(self, df):
+		"""
+		Combine multiple date columns into a single date column and separate time column
+		
+		Args:
+			df (pandas.DataFrame): Input dataframe
+			
+		Returns:
+			pandas.DataFrame: Dataframe with combined_date and combined_time columns
+		"""
+		if df is None or df.empty:
+			return df
+		
+		# Find date/datetime/timestamp columns
+		date_columns = []
+		for col in df.columns:
+			col_lower = col.lower()
+			if any(keyword in col_lower for keyword in ["date", "time", "datetime", "timestamp"]):
+				# Skip our combined columns if they already exist
+				if col not in ["combined_date", "combined_time"]:
+					date_columns.append(col)
+		
+		if not date_columns:
+			logger.info("No date columns found to combine")
+			return df
+		
+		logger.info(f"Found date columns to combine: {date_columns}")
+		
+		# Convert all date columns to datetime
+		parsed_dates = {}
+		for col in date_columns:
+			try:
+				# Parse any column type to datetime - pandas handles both strings and datetime objects
+				parsed_series = pd.to_datetime(df[col], errors='coerce')
+				
+				if not parsed_series.isna().all():
+					parsed_dates[col] = parsed_series
+					logger.info(f"Successfully parsed date column: {col}")
+			except Exception as e:
+				logger.warning(f"Could not parse date column {col}: {e}")
+		
+		if not parsed_dates:
+			logger.warning("No date columns could be parsed")
+			return df
+		
+		# Create a DataFrame with all parsed dates for each row
+		dates_df = pd.DataFrame(parsed_dates)
+		
+		# Find the earliest non-null date for each row
+		def get_earliest_date(row):
+			valid_dates = row.dropna()
+			if len(valid_dates) == 0:
+				return pd.NaT
+			return valid_dates.min()
+		
+		earliest_dates = dates_df.apply(get_earliest_date, axis=1)
+		
+		# Create a copy to avoid modifying the original
+		df = df.copy()
+		
+		# Separate date and time components properly
+		df["combined_date"] = earliest_dates.dt.date
+		
+		# Extract time component, but set to NaN if time is exactly midnight (00:00:00)
+		time_component = earliest_dates.dt.time
+		df["combined_time"] = time_component.apply(
+			lambda t: t if pd.notna(t) and t != pd.Timestamp('00:00:00').time() else None
+		)
+		
+		# Convert combined_time to string format for better CSV handling
+		df["combined_time"] = df["combined_time"].apply(
+			lambda t: t.strftime('%H:%M:%S') if pd.notna(t) else None
+		)
+		
+		# Log summary
+		valid_dates_count = df["combined_date"].notna().sum()
+		valid_times_count = df["combined_time"].notna().sum()
+		logger.info(f"Combined dates: {valid_dates_count} valid dates, {valid_times_count} valid times")
+		
+		# Remove original date columns to reduce redundancy
+		for col in date_columns:
+			if col in df.columns:
+				df = df.drop(col, axis=1)
+				logger.info(f"Removed original date column: {col}")
+		
+		return df
+	
 	def extract_coordinates(self, df, dataset):
 		"""
 		Extract latitude and longitude from the dataset
@@ -400,6 +487,9 @@ class CrimeDatasetScraper:
 		"""
 		if df is None or df.empty:
 			return None
+
+		# First, combine date columns before processing coordinates
+		df = self.combine_date_columns(df)
 		
 		# Try to get coordinate info from enhanced metadata first
 		coord_info = None
@@ -505,6 +595,12 @@ class CrimeDatasetScraper:
 			priority_columns.append("latitude")
 		if "longitude" in df.columns:
 			priority_columns.append("longitude")
+
+		# Add combined date and time columns
+		if "combined_date" in df.columns:
+			priority_columns.append("combined_date")
+		if "combined_time" in df.columns:
+			priority_columns.append("combined_time")
 		
 		# Find date/time columns
 		date_time_columns = []
@@ -649,7 +745,7 @@ def main():
 		scraper.save_dataset_metadata()
 	
 	# Process datasets - up to max_per from each domain
-	combined_data = scraper.process_datasets_balanced(max_per=1, records_per_dataset=50000, force_redownload=False)
+	combined_data = scraper.process_datasets_balanced(max_per=100, records_per_dataset=50000, force_redownload=False)
 	
 	if combined_data is not None:
 		# Print summary
