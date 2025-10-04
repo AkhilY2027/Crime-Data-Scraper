@@ -1,4 +1,6 @@
-James Files
+James Files/
 *.log
 crime_data
 .venv
+50_Cities_Analysis/Before
+50_Cities_Analysis/crime_data_cache

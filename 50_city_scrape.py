@@ -513,22 +513,94 @@ class SocrataCrimeAnalyzer:
         return all_results
     
     def export_results(self, results: List[Dict], output_file: str):
-        """Export results to CSV"""
+        """
+        Export results to CSV with harmonized column names
+        
+        Harmonized Column Structure:
+        - City, State, Population: Basic city information
+        - Data_Portal_Domain: Socrata domain URL
+        - Dataset_Name, Dataset_ID, Dataset_URL: Dataset identification
+        - Chicago_Compatibility_Score_Percent: Match score with Chicago's structure
+        - Perfect_Match_All_Categories: Whether all 7 categories match (Yes/No)
+        - Total_Columns: Number of columns in the dataset
+        - Has_[Category]: Individual category matches (Yes/No format)
+        - All_Column_Names: Pipe-separated list of all column names
+        """
         logger.info(f"\n📊 Exporting results to {output_file}")
         
         if not results:
             logger.warning("No results to export!")
             return
         
-        # Define column order
-        columns = [
-            'city', 'state', 'domain', 'population', 'dataset_name', 'dataset_id', 
-            'dataset_url', 'total_columns', 'match_score', 'all_columns_match'
-        ] + [f'has_{target}' for target in TARGET_COLUMNS.keys()] + ['columns_list']
-        
+        # Create DataFrame first
         df = pd.DataFrame(results)
+        
+        # Define harmonized column mapping
+        column_mapping = {
+            'city': 'City',
+            'state': 'State',
+            'domain': 'Data_Portal_Domain',
+            'population': 'Population',
+            'dataset_name': 'Dataset_Name',
+            'dataset_id': 'Dataset_ID', 
+            'dataset_url': 'Dataset_URL',
+            'total_columns': 'Total_Columns',
+            'match_score': 'Chicago_Compatibility_Score_Percent',
+            'all_columns_match': 'Perfect_Match_All_Categories',
+            'has_coordinates': 'Has_Geographic_Coordinates',
+            'has_date': 'Has_Date_Information',
+            'has_time': 'Has_Time_Information',
+            'has_location_description': 'Has_Location_Description',
+            'has_crime_type': 'Has_Crime_Type_Classification',
+            'has_crime_description': 'Has_Crime_Description',
+            'has_arrest': 'Has_Arrest_Information',
+            'columns_list': 'All_Column_Names'
+        }
+        
+        # Rename columns to harmonized names
+        df = df.rename(columns=column_mapping)
+        
+        # Define final column order (harmonized)
+        columns = [
+            'City', 'State', 'Population', 'Data_Portal_Domain',
+            'Dataset_Name', 'Dataset_ID', 'Dataset_URL',
+            'Chicago_Compatibility_Score_Percent', 'Perfect_Match_All_Categories',
+            'Total_Columns',
+            'Has_Geographic_Coordinates', 'Has_Date_Information', 'Has_Time_Information',
+            'Has_Location_Description', 'Has_Crime_Type_Classification', 
+            'Has_Crime_Description', 'Has_Arrest_Information',
+            'All_Column_Names'
+        ]
+        
+        # Reorder columns and sort
         df = df.reindex(columns=columns)
-        df = df.sort_values(['match_score', 'population'], ascending=[False, False])
+        df = df.sort_values(['Chicago_Compatibility_Score_Percent', 'Population'], ascending=[False, False])
+        
+        # Format data for better readability
+        if 'Population' in df.columns:
+            df['Population'] = df['Population'].apply(lambda x: f"{x:,}" if pd.notna(x) else "")
+        
+        if 'Chicago_Compatibility_Score_Percent' in df.columns:
+            df['Chicago_Compatibility_Score_Percent'] = df['Chicago_Compatibility_Score_Percent'].apply(
+                lambda x: f"{x:.1f}%" if pd.notna(x) else "0.0%"
+            )
+        
+        # Convert boolean columns to Yes/No for clarity
+        boolean_columns = [
+            'Perfect_Match_All_Categories', 'Has_Geographic_Coordinates', 'Has_Date_Information',
+            'Has_Time_Information', 'Has_Location_Description', 'Has_Crime_Type_Classification',
+            'Has_Crime_Description', 'Has_Arrest_Information'
+        ]
+        
+        for col in boolean_columns:
+            if col in df.columns:
+                df[col] = df[col].apply(lambda x: "Yes" if x else "No")
+        
+        # Clean up dataset names and URLs for missing data
+        df['Dataset_Name'] = df['Dataset_Name'].fillna('No crime datasets found')
+        df['Dataset_ID'] = df['Dataset_ID'].fillna('N/A')
+        df['Dataset_URL'] = df['Dataset_URL'].fillna('')
+        df['All_Column_Names'] = df['All_Column_Names'].fillna('No columns available')
         
         # Export to CSV
         df.to_csv(output_file, index=False)
@@ -536,21 +608,164 @@ class SocrataCrimeAnalyzer:
         # Print summary
         logger.info(f"\n📈 SUMMARY STATISTICS")
         logger.info("="*50)
-        logger.info(f"Total cities analyzed: {df['city'].nunique()}")
-        logger.info(f"Total datasets found: {len(df[df['dataset_id'] != 'NO_DATASETS_FOUND'])}")
-        logger.info(f"Perfect matches (100%): {len(df[df['all_columns_match'] == True])}")
-        logger.info(f"High matches (>80%): {len(df[df['match_score'] > 80])}")
-        logger.info(f"Medium matches (50-80%): {len(df[(df['match_score'] >= 50) & (df['match_score'] <= 80)])}")
-        logger.info(f"Low matches (<50%): {len(df[df['match_score'] < 50])}")
+        logger.info(f"Total cities analyzed: {df['City'].nunique()}")
+        logger.info(f"Total datasets found: {len(df[df['Dataset_ID'] != 'N/A'])}")
+        logger.info(f"Perfect matches (100%): {len(df[df['Perfect_Match_All_Categories'] == 'Yes'])}")
+        logger.info(f"High compatibility (≥80%): {len(df[df['Chicago_Compatibility_Score_Percent'].str.rstrip('%').astype(float) >= 80.0])}")
+        logger.info(f"Average compatibility score: {df[df['Dataset_ID'] != 'N/A']['Chicago_Compatibility_Score_Percent'].str.rstrip('%').astype(float).mean():.1f}%")
+        
+        # Show top 5 most compatible cities
+        top_cities = df[df['Dataset_ID'] != 'N/A'].head(5)
+        logger.info(f"\n🏆 TOP 5 MOST COMPATIBLE CITIES:")
+        for idx, row in top_cities.iterrows():
+            logger.info(f"  {row['City']}, {row['State']}: {row['Chicago_Compatibility_Score_Percent']} compatibility")
+        
+        # Get numeric scores for filtering (convert percentage strings back to float)
+        numeric_scores = df[df['Dataset_ID'] != 'N/A']['Chicago_Compatibility_Score_Percent'].str.rstrip('%').astype(float)
+        df_with_numeric = df[df['Dataset_ID'] != 'N/A'].copy()
+        df_with_numeric['_numeric_score'] = numeric_scores
+        
+        logger.info(f"High matches (≥80%): {len(df_with_numeric[df_with_numeric['_numeric_score'] >= 80])}")
+        logger.info(f"Medium matches (50-79%): {len(df_with_numeric[(df_with_numeric['_numeric_score'] >= 50) & (df_with_numeric['_numeric_score'] < 80)])}")
+        logger.info(f"Low matches (<50%): {len(df_with_numeric[df_with_numeric['_numeric_score'] < 50])}")
         
         # Show top matches
         logger.info(f"\n🏆 TOP MATCHING DATASETS:")
-        top_matches = df.head(10)[['city', 'dataset_name', 'match_score', 'total_columns']]
-        for _, row in top_matches.iterrows():
-            if row['dataset_name'] != 'No crime datasets found':
-                logger.info(f"  {row['city']}: {row['dataset_name']} ({row['match_score']:.1f}%, {row['total_columns']} cols)")
+        top_matches = df.head(10)
+        for idx, row in top_matches.iterrows():
+            if row['Dataset_Name'] != 'No crime datasets found' and row['Dataset_ID'] != 'N/A':
+                logger.info(f"  {row['City']}: {row['Dataset_Name']} ({row['Chicago_Compatibility_Score_Percent']}, {row['Total_Columns']} cols)")
         
         logger.info(f"\nFull results saved to: {output_file}")
+        
+        # Generate city summary CSV
+        self._export_city_summary(results, output_file)
+
+    def _export_city_summary(self, results: List[Dict], original_output_file: str):
+        """
+        Export a summary CSV with average compatibility scores per city
+        
+        This creates a simplified view showing:
+        - City information
+        - Number of datasets found
+        - Average compatibility score
+        - Best compatibility score
+        - Whether any dataset had perfect match
+        """
+        # Generate summary filename
+        base_name = original_output_file.replace('.csv', '')
+        summary_file = f"{base_name}_city_summary.csv"
+        
+        logger.info(f"\n📋 Creating city summary: {summary_file}")
+        
+        # Group results by city
+        city_summaries = {}
+        
+        for result in results:
+            city_key = f"{result['city']}, {result['state']}"
+            
+            if city_key not in city_summaries:
+                city_summaries[city_key] = {
+                    'City': result['city'],
+                    'State': result['state'],
+                    'Population': result['population'],
+                    'Data_Portal_Domain': result['domain'],
+                    'datasets_found': 0,
+                    'compatibility_scores': [],
+                    'perfect_matches': 0,
+                    'dataset_names': []
+                }
+            
+            # Only include actual datasets (not "NO_DATASETS_FOUND" or "ERROR")
+            if result['dataset_id'] not in ['NO_DATASETS_FOUND', 'ERROR']:
+                city_summaries[city_key]['datasets_found'] += 1
+                city_summaries[city_key]['compatibility_scores'].append(result['match_score'])
+                city_summaries[city_key]['dataset_names'].append(result['dataset_name'])
+                
+                if result['all_columns_match']:
+                    city_summaries[city_key]['perfect_matches'] += 1
+        
+        # Calculate summary statistics for each city
+        summary_data = []
+        for city_key, data in city_summaries.items():
+            if data['datasets_found'] > 0:
+                avg_score = sum(data['compatibility_scores']) / len(data['compatibility_scores'])
+                max_score = max(data['compatibility_scores'])
+                min_score = min(data['compatibility_scores'])
+            else:
+                avg_score = 0.0
+                max_score = 0.0
+                min_score = 0.0
+            
+            summary_record = {
+                'City': data['City'],
+                'State': data['State'],
+                'Population': f"{data['Population']:,}",
+                'Data_Portal_Domain': data['Data_Portal_Domain'],
+                'Datasets_Found': data['datasets_found'],
+                'Average_Compatibility_Score': f"{avg_score:.1f}%",
+                'Best_Compatibility_Score': f"{max_score:.1f}%",
+                'Worst_Compatibility_Score': f"{min_score:.1f}%" if data['datasets_found'] > 1 else f"{min_score:.1f}%",
+                'Perfect_Matches': data['perfect_matches'],
+                'Has_Crime_Data': 'Yes' if data['datasets_found'] > 0 else 'No',
+                'Data_Quality_Rating': self._get_quality_rating(avg_score, data['datasets_found']),
+                'Dataset_Names': ' | '.join(data['dataset_names'][:3]) + ('...' if len(data['dataset_names']) > 3 else '')
+            }
+            
+            summary_data.append(summary_record)
+        
+        # Create DataFrame and sort by average compatibility score
+        summary_df = pd.DataFrame(summary_data)
+        
+        # Sort by average compatibility (convert percentage string to float for sorting)
+        summary_df['_sort_score'] = summary_df['Average_Compatibility_Score'].str.rstrip('%').astype(float)
+        summary_df = summary_df.sort_values(['_sort_score', 'Population'], ascending=[False, False])
+        summary_df = summary_df.drop('_sort_score', axis=1)
+        
+        # Export summary CSV
+        summary_df.to_csv(summary_file, index=False)
+        
+        # Print summary statistics
+        logger.info(f"\n📊 CITY SUMMARY STATISTICS")
+        logger.info("="*50)
+        logger.info(f"Total cities with crime data: {len(summary_df[summary_df['Has_Crime_Data'] == 'Yes'])}")
+        logger.info(f"Cities with no crime data: {len(summary_df[summary_df['Has_Crime_Data'] == 'No'])}")
+        
+        # Quality distribution
+        high_quality = len(summary_df[summary_df['Data_Quality_Rating'] == 'Excellent'])
+        good_quality = len(summary_df[summary_df['Data_Quality_Rating'] == 'Good'])
+        fair_quality = len(summary_df[summary_df['Data_Quality_Rating'] == 'Fair'])
+        poor_quality = len(summary_df[summary_df['Data_Quality_Rating'] == 'Poor'])
+        
+        logger.info(f"\n📈 DATA QUALITY DISTRIBUTION:")
+        logger.info(f"  Excellent (≥90%): {high_quality} cities")
+        logger.info(f"  Good (70-89%): {good_quality} cities") 
+        logger.info(f"  Fair (50-69%): {fair_quality} cities")
+        logger.info(f"  Poor (<50%): {poor_quality} cities")
+        
+        # Show top performers
+        top_performers = summary_df[summary_df['Has_Crime_Data'] == 'Yes'].head(10)
+        logger.info(f"\n🏆 TOP 10 CITIES BY DATA COMPATIBILITY:")
+        for idx, row in top_performers.iterrows():
+            logger.info(f"  {idx+1:2d}. {row['City']}, {row['State']}: {row['Average_Compatibility_Score']} "
+                       f"({row['Datasets_Found']} dataset{'s' if row['Datasets_Found'] != 1 else ''})")
+        
+        logger.info(f"\nCity summary saved to: {summary_file}")
+        
+        return summary_file
+    
+    def _get_quality_rating(self, avg_score: float, dataset_count: int) -> str:
+        """Assign a quality rating based on average compatibility score and dataset availability"""
+        if dataset_count == 0:
+            return "No Data"
+        elif avg_score >= 90:
+            return "Excellent"
+        elif avg_score >= 70:
+            return "Good"
+        elif avg_score >= 50:
+            return "Fair"
+        else:
+            return "Poor"
 
 
 def main():
